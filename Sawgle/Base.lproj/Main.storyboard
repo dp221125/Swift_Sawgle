@@ -59,7 +59,7 @@
                                                 <color key="backgroundColor" name="lightPeach"/>
                                                 <color key="textColor" name="brownishGray"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-xX-8KX">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5"/>
@@ -119,7 +119,7 @@
                                                 <color key="backgroundColor" name="lightPeach"/>
                                                 <color key="textColor" name="brownishGray"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6me-3K-Kmn">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5"/>
@@ -179,7 +179,7 @@
                                                 <color key="backgroundColor" name="lightPeach"/>
                                                 <color key="textColor" name="brownishGray"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-2u-mEP">
                                                 <rect key="frame" x="266" y="18" width="5.5" height="5"/>
@@ -237,7 +237,7 @@
                                                 <color key="backgroundColor" name="lightPeach"/>
                                                 <color key="textColor" name="brownishGray"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sqq-QX-KqY">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5.5"/>

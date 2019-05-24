@@ -6,9 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SSShinb7.ttf">
+            <string>SangSangShinb7</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -21,13 +27,24 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-IV-umT">
                                 <rect key="frame" x="0.0" y="227" width="320" height="341"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sawgle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkh-z8-D7u">
+                                <rect key="frame" x="58.5" y="68" width="203" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lkh-z8-D7u" secondAttribute="height" multiplier="29:13" id="Dw6-nT-ceq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SangSangShinb7" family="SangSangShinb7" pointSize="70"/>
+                                <color key="textColor" name="DarkPale"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lBD-IV-umT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="00v-SC-IaL"/>
                             <constraint firstItem="lBD-IV-umT" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.6" id="AdP-V2-lm3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lBD-IV-umT" secondAttribute="bottom" id="Gsh-Hg-QBI"/>
+                            <constraint firstAttribute="bottom" secondItem="lBD-IV-umT" secondAttribute="bottom" id="Gsh-Hg-QBI"/>
+                            <constraint firstItem="Lkh-z8-D7u" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.4" id="LZW-go-exd"/>
                             <constraint firstItem="lBD-IV-umT" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="cON-8c-1CC"/>
+                            <constraint firstItem="Lkh-z8-D7u" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fAJ-Hb-BeB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,5 +56,8 @@
     </scenes>
     <resources>
         <image name="splash" width="1123" height="1806"/>
+        <namedColor name="DarkPale">
+            <color red="0.89803921568627454" green="0.81960784313725488" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
