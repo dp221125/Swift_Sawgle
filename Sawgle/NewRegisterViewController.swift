@@ -14,7 +14,6 @@ class NewRegisterViewController: UIViewController {
     @IBOutlet var passwordCheckCircle: UIImageView!
     @IBOutlet var passwordMatchCheckCIrcle: UIImageView!
     @IBOutlet var nameCheckCircle: UIImageView!
-    
     @IBOutlet var idTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var matchPasswordTextField: UITextField!
@@ -23,6 +22,7 @@ class NewRegisterViewController: UIViewController {
     @IBOutlet var idCheckLabel: UILabel!
     @IBOutlet var passwordCheckLabel: UILabel!
     @IBOutlet var matchPasswordLabel: UILabel!
+    @IBOutlet var registerButton: UIButton!
     
     func makeLabelFontSize() {
         
@@ -34,7 +34,7 @@ class NewRegisterViewController: UIViewController {
         
         if let targetView = view.viewWithTag(998) {
             let height = targetView.bounds.height
-            let checkLabelFont = UIFont.systemFont(ofSize: height * 0.7)
+            let checkLabelFont =  UIFont(name: "S-CoreDream-4Regular", size: height * 0.7)
             idCheckLabel.font = checkLabelFont
             idCheckLabel.adjustsFontSizeToFitWidth = true
             passwordCheckLabel.font = checkLabelFont
@@ -49,13 +49,16 @@ class NewRegisterViewController: UIViewController {
         if let inputText = sender.text {
             if inputText.isHangul() {
                 idCheckLabel.text = "사용할 수 없는 문자열이 포함되어 있습니다."
+                idCheckCircle.backgroundColor = .red
             }else{
                 let removeSpace = inputText.trimmingCharacters(in: .whitespaces)
                 
                 if removeSpace != "" {
                     idCheckLabel.text = "사용할 수 있는 아이디 입니다."
+                    idCheckCircle.backgroundColor = .green
                 }else{
                     idCheckLabel.text = ""
+                    idCheckCircle.backgroundColor = nil
                 }
             }
         }
@@ -65,6 +68,15 @@ class NewRegisterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func moveBirthDayView(_ sender: Any) {
+        
+        guard let birthVC = self.storyboard?.instantiateViewController(withIdentifier: "birthDayVC") else {
+            return
+        }
+        
+        birthVC.modalPresentationStyle = .overCurrentContext
+        self.present(birthVC,animated: true)
+    }
     
     override func viewDidLayoutSubviews() {
         
@@ -86,20 +98,8 @@ class NewRegisterViewController: UIViewController {
         
         idTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
-
-    }
-    @IBAction func moveBirthDayView(_ sender: Any) {
         
-        guard let birthVC = self.storyboard?.instantiateViewController(withIdentifier: "birthDayVC") else {
-            return
-        }
-    
-        birthVC.modalPresentationStyle = .overCurrentContext
-        self.present(birthVC,animated: true)
     }
-    
-
-
 }
 extension NewRegisterViewController: UITextFieldDelegate {
     

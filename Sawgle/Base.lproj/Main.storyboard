@@ -63,7 +63,7 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2sa-xX-8KX">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2sa-xX-8KX" secondAttribute="height" multiplier="1:1" id="e9y-i6-Nnn"/>
                                                 </constraints>
@@ -123,7 +123,7 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6me-3K-Kmn">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="6me-3K-Kmn" secondAttribute="height" multiplier="1:1" id="1K3-Wl-zde"/>
                                                 </constraints>
@@ -183,7 +183,7 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-2u-mEP">
                                                 <rect key="frame" x="266" y="18" width="5.5" height="5"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMZ-4z-bl3">
                                                 <rect key="frame" x="0.0" y="40.5" width="288" height="13.5"/>
@@ -241,7 +241,7 @@
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sqq-QX-KqY">
                                                 <rect key="frame" x="266" y="17.5" width="5.5" height="5.5"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADL-TG-rjA">
                                                 <rect key="frame" x="0.0" y="40.5" width="288" height="13.5"/>
@@ -307,7 +307,7 @@
                                     <constraint firstItem="SMw-7D-FNE" firstAttribute="leading" secondItem="J8G-d7-hKV" secondAttribute="leading" constant="15" id="gtB-jc-7ik"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEd-78-VVQ">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEd-78-VVQ">
                                 <rect key="frame" x="16" y="455.5" width="288" height="54"/>
                                 <fontDescription key="fontDescription" name="SangSangShinb7" family="SangSangShinb7" pointSize="21"/>
                                 <state key="normal" title="가입하기" backgroundImage="RegisterButton">
@@ -362,6 +362,7 @@
                         <outlet property="passwordCheckLabel" destination="Ud5-MK-vYk" id="rcM-uo-NDh"/>
                         <outlet property="passwordMatchCheckCIrcle" destination="BPk-2u-mEP" id="6hd-ic-wli"/>
                         <outlet property="passwordTextField" destination="tG5-j1-w8n" id="tfY-eQ-KLR"/>
+                        <outlet property="registerButton" destination="CEd-78-VVQ" id="Vc2-Ni-c42"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apD-TH-7sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
