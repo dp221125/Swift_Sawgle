@@ -10,12 +10,14 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
+    ///로그인 화면을 생성한다.
     @objc func callLoginViewController() {
         let loginVC = LoginViewController()
         
         self.present(loginVC,animated: true)
     }
     
+    ///회원가입화면을 생성한다.
     @objc func callSingInViewController() {
         let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
         let signInVC = storyBoard.instantiateViewController(withIdentifier: "NewRegisterVC")
@@ -23,6 +25,7 @@ class FirstViewController: UIViewController {
         self.present(signInVC, animated: true)
     }
     
+    ///각각 버튼에 액션을 연결한다.
     func linkActionInFirstView() {
         
         guard let ownView = view as? FirstView else {
@@ -35,6 +38,9 @@ class FirstViewController: UIViewController {
     
     override func loadView() {
         view = FirstView()
-        linkActionInFirstView()
+    }
+    
+    override func viewDidLoad() {
+         linkActionInFirstView()
     }
 }

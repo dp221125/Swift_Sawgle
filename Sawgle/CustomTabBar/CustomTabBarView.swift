@@ -23,8 +23,8 @@ class CustomTabBarView: UIView {
         let customTabBar = UITabBar()
         customTabBar.layer.borderWidth = 0
         customTabBar.clipsToBounds = true
-        customTabBar.barTintColor = .white
-        customTabBar.tintColor = .white
+        customTabBar.barTintColor = UIColor(named: "Pale")
+        customTabBar.tintColor = UIColor(named: "Pale")
         return customTabBar
     }()
     
@@ -77,7 +77,7 @@ class CustomTabBarView: UIView {
         targetStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             targetStack.widthAnchor.constraint(equalTo: customTabBar.widthAnchor,multiplier: 0.3),
-            targetStack.topAnchor.constraint(equalTo: customTabBar.topAnchor,constant: 10)
+            targetStack.topAnchor.constraint(equalTo: customTabBar.topAnchor,constant: 0)
             ])
     }
     
@@ -160,21 +160,30 @@ class CustomTabBarView: UIView {
     ///버튼의 기본적인 상태를 설정한다.
     func insertDefaultOptionAtButton() {
         
+        
         if let firtButton = leftStack.firstItem as? ButtonStack {
-            firtButton.button.setImage(UIImage(named: "home"), for: .normal)
+            firtButton.button.setImage(UIImage(named: "Home"), for: .normal)
+            firtButton.button.setImage(UIImage(named: "SelectedHome"), for: .selected)
+            firtButton.button.setImage(UIImage(named: "SelectedHome"), for: [.selected, .highlighted])
             firtButton.buttonTitle.text = "써글홈"
         }
         if let secondButton = leftStack.secondItem as? ButtonStack {
-            secondButton.button.setImage(UIImage(named: "bookmark"), for: .normal)
+            secondButton.button.setImage(UIImage(named: "Bookmark"), for: .normal)
+            secondButton.button.setImage(UIImage(named: "SelectedBookMark"), for: .selected)
+            secondButton.button.setImage(UIImage(named: "SelectedBookMark"), for: [.selected, .highlighted])
             secondButton.buttonTitle.text = "즐겨찾기"
         }
         if let thirdButton = rightStack.firstItem as? ButtonStack {
-            thirdButton.button.setImage(UIImage(named: "myWrite"), for: .normal)
+            thirdButton.button.setImage(UIImage(named: "MyWrite"), for: .normal)
+            thirdButton.button.setImage(UIImage(named: "SelectedMyWrite"), for: .selected)
+            thirdButton.button.setImage(UIImage(named: "SelectedMyWrite"), for: [.selected, .highlighted])
             thirdButton.buttonTitle.text = "마이글"
 
         }
         if let fourButton = rightStack.secondItem as? ButtonStack {
-            fourButton.button.setImage(UIImage(named: "setting"), for: .normal)
+            fourButton.button.setImage(UIImage(named: "Setting"), for: .normal)
+            fourButton.button.setImage(UIImage(named: "SelectedSetting"), for: .selected)
+            fourButton.button.setImage(UIImage(named: "SelectedSetting"), for: [.selected, .highlighted])
             fourButton.buttonTitle.text = "관리"
         }
 
@@ -182,7 +191,7 @@ class CustomTabBarView: UIView {
     
     
     func makeBackViewLayer() {
-        backView.layer.cornerRadius = 15
+        backView.layer.cornerRadius = 30
         backView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
@@ -282,7 +291,7 @@ class ButtonStack: UIView {
             buttonStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             ])
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         buttonStackView.addArrangedSubview(button)
         buttonStackView.addArrangedSubview(buttonTitle)
     }

@@ -86,7 +86,6 @@ class LoginView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,constant: 0.0).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
     }
     
     func makeTextFieldStackConstraint() {
@@ -126,13 +125,13 @@ class LoginView: UIView {
     
     func makeBackButtionConstraint() {
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 12),
             backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 16)
             ])
 
     }
+    
     func addViewItem() {
         addSubview(logoImageView)
         addSubview(titleLabel)
@@ -166,6 +165,7 @@ class LoginView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
 }
 
 extension UITextField {
@@ -201,8 +201,4 @@ extension UITextField {
 
         return self
     }
-    
-
-    
-
 }

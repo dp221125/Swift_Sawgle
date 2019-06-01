@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,25 +19,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="lBD-IV-umT">
-                                <rect key="frame" x="0.0" y="227" width="320" height="341"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sawgle" translatesAutoresizingMaskIntoConstraints="NO" id="fge-06-oTR">
-                                <rect key="frame" x="40" y="47.5" width="240" height="132"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="fge-06-oTR" secondAttribute="height" multiplier="20:11" id="A9q-dE-dgH"/>
-                                    <constraint firstAttribute="width" constant="240" id="S3G-WX-tOS"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKM-WJ-un8">
+                                <rect key="frame" x="0.0" y="397.5" width="320" height="170.5"/>
+                                <color key="backgroundColor" name="Pale"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="rZp-iI-sAN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lBD-IV-umT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="00v-SC-IaL"/>
-                            <constraint firstItem="lBD-IV-umT" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.6" id="AdP-V2-lm3"/>
-                            <constraint firstAttribute="bottom" secondItem="lBD-IV-umT" secondAttribute="bottom" id="Gsh-Hg-QBI"/>
-                            <constraint firstItem="fge-06-oTR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XEX-8Z-XYl"/>
-                            <constraint firstItem="lBD-IV-umT" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="cON-8c-1CC"/>
-                            <constraint firstItem="fge-06-oTR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.4" id="lcT-PG-pPv"/>
+                            <constraint firstItem="yKM-WJ-un8" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="5WS-Or-V8a"/>
+                            <constraint firstItem="yKM-WJ-un8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5g5-vt-iGa"/>
+                            <constraint firstItem="rZp-iI-sAN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EUs-pP-bpL"/>
+                            <constraint firstItem="rZp-iI-sAN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="FA2-mL-u6d"/>
+                            <constraint firstItem="rZp-iI-sAN" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="FM1-Q7-cRu"/>
+                            <constraint firstItem="rZp-iI-sAN" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="IDN-bt-Mbx"/>
+                            <constraint firstItem="yKM-WJ-un8" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.3" id="lYr-2Q-VEi"/>
+                            <constraint firstItem="yKM-WJ-un8" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="m8f-99-3Sk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -47,7 +47,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sawgle" width="245.5" height="87"/>
-        <image name="splash" width="1123" height="1806"/>
+        <image name="Launch" width="213.5" height="355.5"/>
+        <namedColor name="Pale">
+            <color red="0.98799997568130493" green="0.92199999094009399" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

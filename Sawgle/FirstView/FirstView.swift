@@ -160,14 +160,12 @@ class FirstView: UIView {
         
         prepareViews()
         prepareStackView()
-
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-
 }
 
 extension UIView {
@@ -179,5 +177,6 @@ extension UIView {
         self.centerXAnchor.constraint(equalTo: targetLabel.centerXAnchor).isActive = true
         self.centerYAnchor.constraint(equalTo: targetLabel.centerYAnchor).isActive = true
     }
+    
 }
 

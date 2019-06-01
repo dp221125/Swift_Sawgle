@@ -18,10 +18,28 @@ class CustomTabBar: UIViewController {
     var vcList = [UIViewController]()
     var prevIndex: Int?
     
+    lazy var ownView: CustomTabBarView = {
+        
+        guard let convertView = view as? CustomTabBarView else {
+            return CustomTabBarView()
+        }
+        
+        return convertView
+    }()
+    
     @objc func linkAction(_ sender: UIButton) {
-        checkView()
-        prevIndex = sender.tag
-        moveView(sender.tag)
+        
+        if prevIndex != sender.tag {
+            if prevIndex != nil {
+                let prevButton = ownView.viewWithTag(prevIndex!) as? UIButton
+                prevButton?.isSelected = false
+            }
+            sender.isSelected = true
+            checkView()
+            prevIndex = sender.tag
+            moveView(sender.tag - 1)
+        }
+        
     }
     
     /// 새로운 뷰를 만들기 전에 기본의 뷰가 있으면 그 뷰를 제거한다.
@@ -31,14 +49,15 @@ class CustomTabBar: UIViewController {
             return
         }
         
+        let prevViewArrayNumber = prevSelectedIndex - 1
         navigation?.willMove(toParent: nil)
         navigation?.view.removeFromSuperview()
         navigation?.removeFromParent()
         
-        vcList[prevSelectedIndex].willMove(toParent: nil)
-        vcList[prevSelectedIndex].view.removeFromSuperview()
-        vcList[prevSelectedIndex].removeFromParent()
-        
+        vcList[prevViewArrayNumber].willMove(toParent: nil)
+        vcList[prevViewArrayNumber].view.removeFromSuperview()
+        vcList[prevViewArrayNumber].removeFromParent()
+
     }
     
     /// 새로운 뷰로 이동한다.
@@ -80,22 +99,21 @@ class CustomTabBar: UIViewController {
         
         if let firtButton = targetView.leftStack.firstItem as? ButtonStack {
             firtButton.button.addTarget(self, action: #selector(linkAction), for: .touchUpInside)
-           firtButton.button.tag = 0
+           firtButton.button.tag = 1
         }
         if let secondButton = targetView.leftStack.secondItem as? ButtonStack {
             secondButton.button.addTarget(self, action: #selector(linkAction), for: .touchUpInside)
-            secondButton.button.tag = 1
+            secondButton.button.tag = 2
         }
         if let thirdButton = targetView.rightStack.firstItem as? ButtonStack {
             thirdButton.button.addTarget(self, action: #selector(linkAction), for: .touchUpInside)
-            thirdButton.button.tag = 2
+            thirdButton.button.tag = 3
         }
         if let fourButton = targetView.rightStack.secondItem as? ButtonStack {
             fourButton.button.addTarget(self, action: #selector(linkAction), for: .touchUpInside)
-             fourButton.button.tag = 3
+             fourButton.button.tag = 4
         }
   
-        
         targetView.centerButton.addTarget(self, action: #selector(moveWriteView), for: .touchUpInside)
         
     }
@@ -110,7 +128,9 @@ class CustomTabBar: UIViewController {
     }
     
     override func loadView() {
+        
         view = CustomTabBarView()
+        
     }
     
     override func viewDidLoad() {
@@ -128,8 +148,9 @@ class CustomTabBar: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         if prevIndex == nil {
-            prevIndex = 0
-            moveView(0)
+            if let startButton = ownView.viewWithTag(1) as? UIButton {
+                linkAction(startButton)
+            }
         }
         
     }

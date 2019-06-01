@@ -16,10 +16,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         navigationItem.titleView = UIView().makeLogoView()
-  
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
