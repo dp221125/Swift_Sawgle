@@ -72,7 +72,6 @@ class mySubscribePostCell: UICollectionViewCell {
             postTextView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 16),
             postTextView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
             postTextView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10),
-            postTextView.heightAnchor.constraint(equalTo: heightAnchor,multiplier: 0.38)
             ])
     }
     
@@ -121,6 +120,7 @@ class mySubscribePostCell: UICollectionViewCell {
         makeTimeLabelConstraint()
         makePostTextViewConstraint()
         makeLineViewConstraint()
+        postTextView.bottomAnchor.constraint(equalTo: lineView.topAnchor,constant: -5).isActive = true
         makeGoPostButtonConstraint()
     }
     override init(frame: CGRect) {
