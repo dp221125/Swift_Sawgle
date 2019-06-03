@@ -7,12 +7,12 @@
     },
     {
       "idiom" : "iphone",
-      "filename" : "SelectedSetting@2x.png",
+      "filename" : "Setting@2x_selected.png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "SelectedSetting@3x.png",
+      "filename" : "Setting@3x_selected.png",
       "scale" : "3x"
     }
   ],
