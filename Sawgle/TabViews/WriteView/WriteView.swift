@@ -43,6 +43,8 @@ class WriteView: UIView {
         return UIView().makeLogoView()
     }()
     
+  
+    
     func makeMenuViewConstraint() {
         menuView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -133,3 +135,4 @@ extension UIButton {
         return leftButton
     }
 }
+

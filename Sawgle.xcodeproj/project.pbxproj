@@ -22,10 +22,13 @@
 		B4BDA9B2227A759E0064B561 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDA9B1227A759E0064B561 /* FirstView.swift */; };
 		B4BDA9B5227A759E0064B561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4BDA9B3227A759E0064B561 /* Main.storyboard */; };
 		B4BDA9BA227A759F0064B561 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4BDA9B8227A759F0064B561 /* LaunchScreen.storyboard */; };
-		B4BDA9C4227A82790064B561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4BDA9C3227A82790064B561 /* Assets.xcassets */; };
 		B4BDA9C8227A83CE0064B561 /* SSShinb7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4BDA9C7227A83CC0064B561 /* SSShinb7.ttf */; };
 		B4BDA9CC227A87D80064B561 /* FontList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDA9CB227A87D80064B561 /* FontList.swift */; };
 		B4CE603A22A4AC62009E889A /* MyWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE603922A4AC62009E889A /* MyWriteView.swift */; };
+		B4CE603C22A4E7CD009E889A /* MyWriteSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE603B22A4E7CD009E889A /* MyWriteSectionView.swift */; };
+		B4CE603E22A4F373009E889A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CE603D22A4F373009E889A /* Assets.xcassets */; };
+		B4CE604022A4FBAF009E889A /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4CE603F22A4FBA9009E889A /* SCDream2.otf */; };
+		B4CE604222A50526009E889A /* MySubscribePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE604122A50526009E889A /* MySubscribePostCell.swift */; };
 		B4ED24EC22977AC90000598F /* SCDream4.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4189F9022929E4C00B10E46 /* SCDream4.otf */; };
 		B4ED24ED22977ACB0000598F /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4189F9122929E5400B10E46 /* SCDream5.otf */; };
 		B4ED24F02297839A0000598F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ED24EF2297839A0000598F /* FirstViewController.swift */; };
@@ -52,10 +55,13 @@
 		B4BDA9B4227A759E0064B561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4BDA9B9227A759F0064B561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4BDA9BB227A759F0064B561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4BDA9C3227A82790064B561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4BDA9C7227A83CC0064B561 /* SSShinb7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SSShinb7.ttf; sourceTree = "<group>"; };
 		B4BDA9CB227A87D80064B561 /* FontList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontList.swift; sourceTree = "<group>"; };
 		B4CE603922A4AC62009E889A /* MyWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteView.swift; sourceTree = "<group>"; };
+		B4CE603B22A4E7CD009E889A /* MyWriteSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteSectionView.swift; sourceTree = "<group>"; };
+		B4CE603D22A4F373009E889A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B4CE603F22A4FBA9009E889A /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
+		B4CE604122A50526009E889A /* MySubscribePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubscribePostCell.swift; sourceTree = "<group>"; };
 		B4ED24EF2297839A0000598F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		B4ED24F2229784F90000598F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B4BDA9C7227A83CC0064B561 /* SSShinb7.ttf */,
+				B4CE603F22A4FBA9009E889A /* SCDream2.otf */,
 				B4189F9022929E4C00B10E46 /* SCDream4.otf */,
 				B4189F9122929E5400B10E46 /* SCDream5.otf */,
 			);
@@ -130,6 +137,7 @@
 		B4BDA9AE227A759E0064B561 /* Sawgle */ = {
 			isa = PBXGroup;
 			children = (
+				B4CE603D22A4F373009E889A /* Assets.xcassets */,
 				B42BF59B227AA3CA00D91F09 /* Font */,
 				B4ED24EE229783730000598F /* FirstView */,
 				B4ED24F1229784D70000598F /* LoginView */,
@@ -140,7 +148,6 @@
 				B4BDA9AF227A759E0064B561 /* AppDelegate.swift */,
 				1E2CC67B22927C6F006E0B6E /* NewRegisterViewController.swift */,
 				B4BDA9BB227A759F0064B561 /* Info.plist */,
-				B4BDA9C3227A82790064B561 /* Assets.xcassets */,
 				B4BDA9CB227A87D80064B561 /* FontList.swift */,
 				B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */,
 			);
@@ -150,8 +157,10 @@
 		B4CE603822A4AC48009E889A /* MyWriteView */ = {
 			isa = PBXGroup;
 			children = (
-				B4AF0AF3229BA399008EEED7 /* MyWriteViewController.swift */,
 				B4CE603922A4AC62009E889A /* MyWriteView.swift */,
+				B4AF0AF3229BA399008EEED7 /* MyWriteViewController.swift */,
+				B4CE603B22A4E7CD009E889A /* MyWriteSectionView.swift */,
+				B4CE604122A50526009E889A /* MySubscribePostCell.swift */,
 			);
 			path = MyWriteView;
 			sourceTree = "<group>";
@@ -236,7 +245,8 @@
 				B4BDA9BA227A759F0064B561 /* LaunchScreen.storyboard in Resources */,
 				B4BDA9C8227A83CE0064B561 /* SSShinb7.ttf in Resources */,
 				B4ED24ED22977ACB0000598F /* SCDream5.otf in Resources */,
-				B4BDA9C4227A82790064B561 /* Assets.xcassets in Resources */,
+				B4CE604022A4FBAF009E889A /* SCDream2.otf in Resources */,
+				B4CE603E22A4F373009E889A /* Assets.xcassets in Resources */,
 				B4BDA9B5227A759E0064B561 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +270,9 @@
 				B4AF0AED229B804B008EEED7 /* CustomTabBar.swift in Sources */,
 				B4AF0AF0229B810A008EEED7 /* HomeViewController.swift in Sources */,
 				B4AF0AF4229BA399008EEED7 /* MyWriteViewController.swift in Sources */,
+				B4CE604222A50526009E889A /* MySubscribePostCell.swift in Sources */,
 				B4BDA9B0227A759E0064B561 /* AppDelegate.swift in Sources */,
+				B4CE603C22A4E7CD009E889A /* MyWriteSectionView.swift in Sources */,
 				B4189F8F22929AF100B10E46 /* BirthDayVIewController.swift in Sources */,
 				B4AF0AFB229BCBE6008EEED7 /* WriteViewController.swift in Sources */,
 				B4CE603A22A4AC62009E889A /* MyWriteView.swift in Sources */,
