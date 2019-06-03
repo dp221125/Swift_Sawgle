@@ -12,7 +12,7 @@ class CustomTabBar: UIViewController {
     
     var homeVC: HomeViewController?
     var boomarkVC: BookMarkViewController?
-    var mywriteVC: MyWriteHistoryViewController?
+    var mywriteVC: MyWriteViewController?
     var settingVC: SettingViewController?
     var navigation: UINavigationController?
     var vcList = [UIViewController]()
@@ -72,9 +72,9 @@ class CustomTabBar: UIViewController {
         
         
         let newNavigation = UINavigationController(rootViewController: vcList[index])
-        newNavigation.navigationBar.barTintColor = .white
-        newNavigation.navigationBar.tintColor = .white
-        
+        newNavigation.navigationBar.shadowImage = UIImage()
+        newNavigation.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        newNavigation.navigationBar.titleTextAttributes = [.font: UIFont().mainFont(displaySize: 24), .foregroundColor : UIColor.white]
 
         navigation = newNavigation
         
@@ -137,7 +137,7 @@ class CustomTabBar: UIViewController {
         
         homeVC = HomeViewController()
         boomarkVC = BookMarkViewController()
-        mywriteVC = MyWriteHistoryViewController()
+        mywriteVC = MyWriteViewController()
         settingVC = SettingViewController()
         
         makeViewList()

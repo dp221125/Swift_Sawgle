@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyWriteHistoryViewController: UIViewController {
+class MyWriteViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
@@ -16,7 +16,7 @@ class MyWriteHistoryViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationItem.titleView = UIView().makeLogoView()
+        navigationItem.title = "mygle"
     }
     
     override func viewWillAppear(_ animated: Bool) {

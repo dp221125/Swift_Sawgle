@@ -16,7 +16,7 @@ class BookMarkViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationItem.titleView = UIView().makeLogoView()
+        navigationItem.title = "sawgle"
     }
     
     override func viewWillAppear(_ animated: Bool) {
