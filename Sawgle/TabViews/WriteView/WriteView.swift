@@ -10,7 +10,18 @@ import UIKit
 
 class WriteView: UIView {
     var menuViewHeight: CGFloat = 44.0
-
+    
+    lazy var statusBarHeight: CGFloat = {
+        
+        guard let keyWindow = UIApplication.shared.keyWindow else {
+            return CGFloat()
+        }
+        
+        let height = keyWindow.safeAreaInsets.top
+        
+        return height
+    }()
+    
     let menuView: UIView = {
         let menuView = UIView()
         menuView.backgroundColor = UIColor(named: "Pale")
@@ -48,7 +59,6 @@ class WriteView: UIView {
             menuView.topAnchor.constraint(equalTo: topAnchor),
             menuView.widthAnchor.constraint(equalTo: widthAnchor),
             menuView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: menuViewHeight),
-            menuView.heightAnchor.constraint(equalToConstant: menuViewHeight),
             menuView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
@@ -56,18 +66,15 @@ class WriteView: UIView {
     func makeButtonConstarint(targetButton: UIButton) {
         targetButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            targetButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
-            targetButton.heightAnchor.constraint(equalTo: logoImageView.heightAnchor),
-            targetButton.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
-
+            targetButton.centerYAnchor.constraint(equalTo: menuView.centerYAnchor,constant: statusBarHeight * 0.38),
         ])
     }
 
     func makeLogoViewConstraint() {
+        self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logoImageView.heightAnchor.constraint(equalToConstant: menuViewHeight - 10),
             logoImageView.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: menuViewHeight / 2),
+            logoImageView.centerYAnchor.constraint(equalTo: menuView.centerYAnchor,constant: statusBarHeight * 0.36),
         ])
     }
 
@@ -96,8 +103,8 @@ class WriteView: UIView {
         self.makeButtonConstarint(targetButton: self.leftButton)
         self.makeButtonConstarint(targetButton: self.rightButton)
 
-        self.leftButton.leadingAnchor.constraint(equalTo: self.menuView.leadingAnchor, constant: 16).isActive = true
-        self.rightButton.trailingAnchor.constraint(equalTo: self.menuView.trailingAnchor, constant: -16).isActive = true
+        self.leftButton.leadingAnchor.constraint(equalTo: self.menuView.leadingAnchor, constant: 32).isActive = true
+        self.rightButton.trailingAnchor.constraint(equalTo: self.menuView.trailingAnchor, constant: -32).isActive = true
 
         self.makeBottomViewConstraint()
     }
