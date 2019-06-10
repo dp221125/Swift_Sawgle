@@ -9,17 +9,16 @@
 import UIKit
 
 class BookMarkViewController: UIViewController {
-    
     override func loadView() {
         view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
     }
-    
+
     override func viewDidLoad() {
         navigationItem.title = "sawgle"
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
+
+    override func viewWillAppear(_: Bool) {
         print("BookMark")
     }
 }

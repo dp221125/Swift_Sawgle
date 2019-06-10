@@ -14,13 +14,12 @@ enum TextFieldCategory: String {
 }
 
 class LoginView: UIView {
-    
     let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "logo")
         return logoImageView
     }()
-    
+
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont().mainFont(displaySize: 60)
@@ -28,7 +27,7 @@ class LoginView: UIView {
         titleLabel.textColor = .white
         return titleLabel
     }()
-    
+
     let textFiedlStackView: UIStackView = {
         let textFiedlStackView = UIStackView()
         textFiedlStackView.axis = NSLayoutConstraint.Axis.vertical
@@ -36,15 +35,15 @@ class LoginView: UIView {
         textFiedlStackView.spacing = 10.0
         return textFiedlStackView
     }()
-    
-    let idTextField: UITextField  = {
-        return UITextField().makeTextField(placeHoldText: "ID")
+
+    let idTextField: UITextField = {
+        UITextField().makeTextField(placeHoldText: "ID")
     }()
-    
+
     let passwordTextField: UITextField = {
-        return UITextField().makeTextField(placeHoldText: "Password")
+        UITextField().makeTextField(placeHoldText: "Password")
     }()
-    
+
     let loginLabel: UILabel = {
         let loginLabel = UILabel()
         loginLabel.backgroundColor = UIColor.white
@@ -56,24 +55,23 @@ class LoginView: UIView {
         loginLabel.textColor = UIColor(named: "brownishGray")
         return loginLabel
     }()
-    
+
     let loginButton: UIButton = {
-        return UIButton()
+        UIButton()
     }()
-    
+
     let backButton: UIButton = {
         let backButton = UIButton()
         backButton.setImage(UIImage(named: "Back"), for: .normal)
         return backButton
     }()
-    
-    
+
     func makeLogoImageViewConstraint() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17).isActive = true
-        logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor, multiplier: 1.15).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor,constant: 18).isActive = true
-        NSLayoutConstraint(item: logoImageView,
+        self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.logoImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17).isActive = true
+        self.logoImageView.widthAnchor.constraint(equalTo: self.logoImageView.heightAnchor, multiplier: 1.15).isActive = true
+        self.logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 18).isActive = true
+        NSLayoutConstraint(item: self.logoImageView,
                            attribute: .centerY,
                            relatedBy: .equal,
                            toItem: self,
@@ -81,121 +79,117 @@ class LoginView: UIView {
                            multiplier: 0.6,
                            constant: 0).isActive = true
     }
-    
+
     func makeTitleLabelConstrinat() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor,constant: 0.0).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 0.0).isActive = true
+        self.titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
-    
+
     func makeTextFieldStackConstraint() {
-        textFiedlStackView.translatesAutoresizingMaskIntoConstraints = false
-        textFiedlStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        NSLayoutConstraint(item: textFiedlStackView,
+        self.textFiedlStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.textFiedlStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        NSLayoutConstraint(item: self.textFiedlStackView,
                            attribute: .centerY,
                            relatedBy: .equal,
                            toItem: self,
                            attribute: .centerY,
                            multiplier: 1.2,
                            constant: 0.0).isActive = true
-        textFiedlStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 16).isActive = true
-        textFiedlStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -16).isActive = true
+        self.textFiedlStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        self.textFiedlStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
     }
-    
-    func makeIdTextFieldConstraint() {
-        idTextField.translatesAutoresizingMaskIntoConstraints = false
-        idTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05).isActive = true
-    }
-    
-    func makeLoginLabelConstraint() {
-        loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.topAnchor.constraint(equalTo: textFiedlStackView.bottomAnchor,constant: 20).isActive = true
-        loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16).isActive = true
-        loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16).isActive = true
-        loginLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066).isActive = true
-    }
-    
-    func makeLoginButtonConstraint() {
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.widthAnchor.constraint(equalTo: loginLabel.widthAnchor).isActive = true
-        loginButton.heightAnchor.constraint(equalTo: loginLabel.heightAnchor).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: loginLabel.centerXAnchor).isActive = true
-        loginButton.centerYAnchor.constraint(equalTo: loginLabel.centerYAnchor).isActive = true
-    }
-    
-    func makeBackButtionConstraint() {
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 12),
-            backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 16)
-            ])
 
+    func makeIdTextFieldConstraint() {
+        self.idTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.idTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05).isActive = true
     }
-    
+
+    func makeLoginLabelConstraint() {
+        self.loginLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.loginLabel.topAnchor.constraint(equalTo: self.textFiedlStackView.bottomAnchor, constant: 20).isActive = true
+        self.loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        self.loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        self.loginLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066).isActive = true
+    }
+
+    func makeLoginButtonConstraint() {
+        self.loginButton.translatesAutoresizingMaskIntoConstraints = false
+        self.loginButton.widthAnchor.constraint(equalTo: self.loginLabel.widthAnchor).isActive = true
+        self.loginButton.heightAnchor.constraint(equalTo: self.loginLabel.heightAnchor).isActive = true
+        self.loginButton.centerXAnchor.constraint(equalTo: self.loginLabel.centerXAnchor).isActive = true
+        self.loginButton.centerYAnchor.constraint(equalTo: self.loginLabel.centerYAnchor).isActive = true
+    }
+
+    func makeBackButtionConstraint() {
+        self.backButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12),
+            backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+        ])
+    }
+
     func addViewItem() {
-        addSubview(logoImageView)
-        addSubview(titleLabel)
-        addSubview(textFiedlStackView)
-        addSubview(loginLabel)
-        addSubview(loginButton)
-        addSubview(backButton)
+        addSubview(self.logoImageView)
+        addSubview(self.titleLabel)
+        addSubview(self.textFiedlStackView)
+        addSubview(self.loginLabel)
+        addSubview(self.loginButton)
+        addSubview(self.backButton)
     }
-    
+
     func makeStackView() {
-        textFiedlStackView.addArrangedSubview(idTextField)
-                textFiedlStackView.addArrangedSubview(passwordTextField)
+        self.textFiedlStackView.addArrangedSubview(self.idTextField)
+        self.textFiedlStackView.addArrangedSubview(self.passwordTextField)
     }
-    
+
     func makeViewItemConstraint() {
-        makeLogoImageViewConstraint()
-        makeTitleLabelConstrinat()
-        makeTextFieldStackConstraint()
-        makeIdTextFieldConstraint()
-        makeLoginLabelConstraint()
-        makeBackButtionConstraint()
+        self.makeLogoImageViewConstraint()
+        self.makeTitleLabelConstrinat()
+        self.makeTextFieldStackConstraint()
+        self.makeIdTextFieldConstraint()
+        self.makeLoginLabelConstraint()
+        self.makeBackButtionConstraint()
     }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "Pale")
-        addViewItem()
-        makeStackView()
-        makeViewItemConstraint()
+        self.addViewItem()
+        self.makeStackView()
+        self.makeViewItemConstraint()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }
 
 extension UITextField {
-    
     func makeTextField(placeHoldText: String) -> UITextField {
-        
         self.backgroundColor = UIColor(named: "lightPeach")
         self.layer.cornerRadius = 10.0
         self.textAlignment = .center
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        
-        self.attributedPlaceholder = NSAttributedString(string:placeHoldText, attributes: [.foregroundColor: UIColor.white,.font: UIFont.systemFont(ofSize: 20, weight: .regular), .paragraphStyle: paragraphStyle])
-    
+
+        self.attributedPlaceholder = NSAttributedString(string: placeHoldText, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20, weight: .regular), .paragraphStyle: paragraphStyle])
+
         guard let category = TextFieldCategory(rawValue: placeHoldText) else {
             return UITextField()
         }
-        
-        
+
         switch category {
         case .id:
             self.isSecureTextEntry = false
         case .password:
             self.isSecureTextEntry = true
         }
-        
+
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
         self.leftView = leftView
         self.leftViewMode = .always
-        
+
         let newPosition = self.beginningOfDocument
         self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
 

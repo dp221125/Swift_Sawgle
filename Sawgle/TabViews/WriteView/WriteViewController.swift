@@ -9,19 +9,18 @@
 import UIKit
 
 class WriteViewController: UIViewController {
-    
     @objc func cancelView() {
         dismiss(animated: true)
     }
-    
+
     func linkActionInWriteVC() {
         guard let ownView = view as? WriteView else { return }
-        
-        ownView.leftButton.addTarget(self, action: #selector(cancelView), for: .touchUpInside)
+
+        ownView.leftButton.addTarget(self, action: #selector(self.cancelView), for: .touchUpInside)
     }
-    
+
     override func loadView() {
         view = WriteView()
-        linkActionInWriteVC()
+        self.linkActionInWriteVC()
     }
 }

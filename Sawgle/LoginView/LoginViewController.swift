@@ -9,27 +9,25 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    //현재 뷰를 dismiss한다.
+    // 현재 뷰를 dismiss한다.
     @objc func dismissViewController() {
         self.dismiss(animated: true)
     }
-    
-    ///백버튼에 액션을 연결한다.
+
+    /// 백버튼에 액션을 연결한다.
     func linkActionInLoginVC() {
-        
         guard let ownView = view as? LoginView else {
             return
         }
-        
-        ownView.backButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+
+        ownView.backButton.addTarget(self, action: #selector(self.dismissViewController), for: .touchUpInside)
     }
-    
+
     override func loadView() {
         view = LoginView()
     }
-    
+
     override func viewDidLoad() {
-        linkActionInLoginVC()
+        self.linkActionInLoginVC()
     }
 }
