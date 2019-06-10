@@ -9,19 +9,17 @@
 import UIKit
 
 class BirthDayVIewController: UIViewController {
-    
-    
-    @IBAction func moveParentVC(_ sender: Any) {
+    @IBAction func moveParentVC(_: Any) {
         self.dismiss(animated: true)
     }
-    
+
     override func viewDidLoad() {
         view.backgroundColor = .clear
-        
+
         if let backView = view.viewWithTag(999) {
             backView.layer.cornerRadius = 45.0
         }
-        
+
         let blurEffect = UIBlurEffect(style: .dark)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = view.bounds

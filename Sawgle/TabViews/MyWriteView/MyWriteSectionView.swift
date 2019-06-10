@@ -24,6 +24,12 @@ class MyWriteSectionView: UIView {
         return countLabel
     }()
     
+    let enterImageView: UIImageView = {
+        let enterImageView = UIImageView()
+        enterImageView.image = UIImage(named: "Entrance")
+        return enterImageView
+    }()
+    
     func makeSectionTitleLabelConstraint() {
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,14 +50,25 @@ class MyWriteSectionView: UIView {
             ])
     }
     
+    func makeEnterImageViewConstraint() {
+        enterImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            enterImageView.centerYAnchor.constraint(equalTo: sectionTitleLabel.centerYAnchor),
+            enterImageView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -5),
+            enterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.22)
+            ])
+    }
+    
     func addViewItem() {
         addSubview(sectionTitleLabel)
         addSubview(countLabel)
+        addSubview(enterImageView)
     }
     
     func addViewItemConstraint() {
         makeSectionTitleLabelConstraint()
         makeCountLabelConstraint()
+        makeEnterImageViewConstraint()
     }
     
     override init(frame: CGRect) {

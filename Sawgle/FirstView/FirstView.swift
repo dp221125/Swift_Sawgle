@@ -9,19 +9,18 @@
 import UIKit
 
 class FirstView: UIView {
-    
     let panHeartImageView: UIImageView = {
         let panHeartImaveView = UIImageView()
         panHeartImaveView.image = UIImage(named: "PanHeart")
         return panHeartImaveView
     }()
-    
+
     let panImageView: UIImageView = {
         let panImageView = UIImageView()
         panImageView.image = UIImage(named: "Pan")
         return panImageView
     }()
-    
+
     let homeTitleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont().mainFont(displaySize: 80)
@@ -29,7 +28,7 @@ class FirstView: UIView {
         titleLabel.textColor = .white
         return titleLabel
     }()
-    
+
     let twoButtonStackView: UIStackView = {
         let buttonStack = UIStackView()
         buttonStack.axis = NSLayoutConstraint.Axis.vertical
@@ -37,7 +36,7 @@ class FirstView: UIView {
         buttonStack.spacing = 20.0
         return buttonStack
     }()
-    
+
     let loginLabel: UILabel = {
         let loginLabel = UILabel()
         loginLabel.backgroundColor = UIColor(named: "Peach")
@@ -49,7 +48,7 @@ class FirstView: UIView {
         loginLabel.textColor = UIColor.white
         return loginLabel
     }()
-    
+
     let goSingInViewLabel: UILabel = {
         let goSingInViewLabel = UILabel()
         goSingInViewLabel.backgroundColor = UIColor.clear
@@ -63,113 +62,107 @@ class FirstView: UIView {
         goSingInViewLabel.textColor = UIColor(named: "brownishGray")
         return goSingInViewLabel
     }()
-    
+
     let gologinViewButton: UIButton = {
-        return UIButton()
+        UIButton()
     }()
-    
+
     let goSingInButton: UIButton = {
-        return UIButton()
+        UIButton()
     }()
-    
+
     func makePanHeartImageViewConstraint() {
-        panHeartImageView.translatesAutoresizingMaskIntoConstraints = false
-        panHeartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: -20).isActive = true
-        NSLayoutConstraint(item: panHeartImageView,
+        self.panHeartImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.panHeartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: -20).isActive = true
+        NSLayoutConstraint(item: self.panHeartImageView,
                            attribute: .centerY,
                            relatedBy: .equal,
                            toItem: self,
                            attribute: .centerY,
                            multiplier: 0.4,
                            constant: 0.0).isActive = true
-        panHeartImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15).isActive = true
-        panHeartImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6).isActive = true
+        self.panHeartImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15).isActive = true
+        self.panHeartImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6).isActive = true
     }
-    
+
     func makePanImageViewConstraint() {
-        panImageView.translatesAutoresizingMaskIntoConstraints = false
-        panImageView.leadingAnchor.constraint(equalTo: panHeartImageView.trailingAnchor,constant: -5).isActive = true
-        NSLayoutConstraint(item: panImageView,
+        self.panImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.panImageView.leadingAnchor.constraint(equalTo: self.panHeartImageView.trailingAnchor, constant: -5).isActive = true
+        NSLayoutConstraint(item: self.panImageView,
                            attribute: .centerY,
                            relatedBy: .equal,
-                           toItem: panHeartImageView,
+                           toItem: self.panHeartImageView,
                            attribute: .centerY,
                            multiplier: 0.8,
                            constant: 0.0).isActive = true
-        panImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15).isActive = true
-        panImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.38).isActive = true
-        
+        self.panImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15).isActive = true
+        self.panImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.38).isActive = true
     }
-    
-    func makeHomeTitleLabelConstrinat() {
-        homeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        homeTitleLabel.topAnchor.constraint(equalTo: self.panHeartImageView.bottomAnchor,constant: 5.0).isActive = true
-        homeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
+    func makeHomeTitleLabelConstrinat() {
+        self.homeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.homeTitleLabel.topAnchor.constraint(equalTo: self.panHeartImageView.bottomAnchor, constant: 5.0).isActive = true
+        self.homeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
-    
+
     func makeTwoButtonStackConstraint() {
-        twoButtonStackView.translatesAutoresizingMaskIntoConstraints = false
-        twoButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        NSLayoutConstraint(item: twoButtonStackView,
+        self.twoButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.twoButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        NSLayoutConstraint(item: self.twoButtonStackView,
                            attribute: .centerY,
                            relatedBy: .equal,
                            toItem: self,
                            attribute: .centerY,
                            multiplier: 1.5,
                            constant: 0.0).isActive = true
-        twoButtonStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 16).isActive = true
-        twoButtonStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -16).isActive = true
+        self.twoButtonStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        self.twoButtonStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
     }
-    
+
     func makeLoginLabelConstraint() {
-        
-        loginLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066).isActive = true
-        
+        self.loginLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066).isActive = true
     }
-    
+
     func prepareViews() {
-        addSubview(panHeartImageView)
-        makePanHeartImageViewConstraint()
-        
-        addSubview(panImageView)
-        makePanImageViewConstraint()
-        
-        addSubview(homeTitleLabel)
-        makeHomeTitleLabelConstrinat()
-        
-        addSubview(twoButtonStackView)
-        makeTwoButtonStackConstraint()
+        addSubview(self.panHeartImageView)
+        self.makePanHeartImageViewConstraint()
+
+        addSubview(self.panImageView)
+        self.makePanImageViewConstraint()
+
+        addSubview(self.homeTitleLabel)
+        self.makeHomeTitleLabelConstrinat()
+
+        addSubview(self.twoButtonStackView)
+        self.makeTwoButtonStackConstraint()
     }
-    
+
     func prepareStackView() {
-        twoButtonStackView.addArrangedSubview(loginLabel)
-        makeLoginLabelConstraint()
-        twoButtonStackView.addArrangedSubview(goSingInViewLabel)
-        
-        addSubview(gologinViewButton)
-        gologinViewButton.equalLabelWidthHeight(targetLabel: loginLabel)
-        
-        addSubview(goSingInButton)
-        goSingInButton.equalLabelWidthHeight(targetLabel: goSingInViewLabel)
+        self.twoButtonStackView.addArrangedSubview(self.loginLabel)
+        self.makeLoginLabelConstraint()
+        self.twoButtonStackView.addArrangedSubview(self.goSingInViewLabel)
+
+        addSubview(self.gologinViewButton)
+        self.gologinViewButton.equalLabelWidthHeight(targetLabel: self.loginLabel)
+
+        addSubview(self.goSingInButton)
+        self.goSingInButton.equalLabelWidthHeight(targetLabel: self.goSingInViewLabel)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "Pale")
-        
-        prepareViews()
-        prepareStackView()
+
+        self.prepareViews()
+        self.prepareStackView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }
 
 extension UIView {
-    
     func equalLabelWidthHeight(targetLabel: UILabel) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalTo: targetLabel.widthAnchor).isActive = true
@@ -177,6 +170,4 @@ extension UIView {
         self.centerXAnchor.constraint(equalTo: targetLabel.centerXAnchor).isActive = true
         self.centerYAnchor.constraint(equalTo: targetLabel.centerYAnchor).isActive = true
     }
-    
 }
-
