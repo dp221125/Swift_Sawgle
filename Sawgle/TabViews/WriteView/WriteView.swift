@@ -10,18 +10,17 @@ import UIKit
 
 class WriteView: UIView {
     var menuViewHeight: CGFloat = 44.0
-    
+
     lazy var statusBarHeight: CGFloat = {
-        
         guard let keyWindow = UIApplication.shared.keyWindow else {
             return CGFloat()
         }
-        
+
         let height = keyWindow.safeAreaInsets.top
-        
+
         return height
     }()
-    
+
     let menuView: UIView = {
         let menuView = UIView()
         menuView.backgroundColor = UIColor(named: "Pale")
@@ -66,7 +65,7 @@ class WriteView: UIView {
     func makeButtonConstarint(targetButton: UIButton) {
         targetButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            targetButton.centerYAnchor.constraint(equalTo: menuView.centerYAnchor,constant: statusBarHeight * 0.38),
+            targetButton.centerYAnchor.constraint(equalTo: menuView.centerYAnchor, constant: statusBarHeight * 0.38),
         ])
     }
 
@@ -74,7 +73,7 @@ class WriteView: UIView {
         self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: menuView.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: menuView.centerYAnchor,constant: statusBarHeight * 0.36),
+            logoImageView.centerYAnchor.constraint(equalTo: menuView.centerYAnchor, constant: statusBarHeight * 0.36),
         ])
     }
 
@@ -89,7 +88,7 @@ class WriteView: UIView {
         ])
     }
 
-    func addViewItem() {
+    func addViewItemInWriteView() {
         addSubview(self.menuView)
         addSubview(self.leftButton)
         addSubview(self.logoImageView)
@@ -114,7 +113,7 @@ class WriteView: UIView {
 
         backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
 
-        self.addViewItem()
+        self.addViewItemInWriteView()
         self.makeViewItemConstraint()
     }
 

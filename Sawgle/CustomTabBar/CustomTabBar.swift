@@ -61,15 +61,14 @@ class CustomTabBar: UIViewController {
         }
 
         addChild(self.vcList[index])
-        self.vcList[index].view.frame = targetView.contentView.bounds
-
+        
         let newNavigation = UINavigationController(rootViewController: vcList[index])
+        newNavigation.navigationBar.barTintColor = UIColor(named: "Pale")
         newNavigation.navigationBar.shadowImage = UIImage()
-        newNavigation.navigationBar.setBackgroundImage(UIImage(), for: .default)
         newNavigation.navigationBar.titleTextAttributes = [.font: UIFont().mainFont(displaySize: 24), .foregroundColor: UIColor.white]
 
         self.navigation = newNavigation
-
+        newNavigation.view.frame = targetView.contentView.bounds
         targetView.contentView.addSubview(newNavigation.view)
 
         self.vcList[index].didMove(toParent: self)
