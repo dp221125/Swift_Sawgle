@@ -14,7 +14,6 @@ class CustomTabBarView: UIView {
 
     let contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .white
         return contentView
     }()
 
@@ -53,9 +52,9 @@ class CustomTabBarView: UIView {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: heightAnchor),
+            contentView.bottomAnchor.constraint(equalTo: customTabBar.topAnchor, constant: -5),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
         ])
     }
 
@@ -104,7 +103,6 @@ class CustomTabBarView: UIView {
             centerButton.widthAnchor.constraint(equalToConstant: buttonSize),
             centerButton.heightAnchor.constraint(equalTo: centerButton.widthAnchor),
             centerButton.topAnchor.constraint(equalTo: customTabBar.topAnchor, constant: -(buttonSize / 2)),
-
         ])
     }
 
@@ -115,12 +113,11 @@ class CustomTabBarView: UIView {
             backView.centerYAnchor.constraint(equalTo: customTabBar.centerYAnchor),
             backView.widthAnchor.constraint(equalTo: customTabBar.widthAnchor),
             backView.heightAnchor.constraint(equalTo: customTabBar.heightAnchor),
-
         ])
     }
 
     func makeView() {
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "Pale")
         addSubview(self.contentView)
         addSubview(self.customTabBar)
         addSubview(self.backView)
@@ -132,7 +129,6 @@ class CustomTabBarView: UIView {
     }
 
     func makeItemConstraints() {
-        self.makeContentViewConstraint()
         self.makeCustomTabBarConstraint()
         self.makeStackConstraint(targetStack: self.leftStack)
         self.makeLeftStackConstraint()
@@ -140,6 +136,7 @@ class CustomTabBarView: UIView {
         self.makeRightStackConstraint()
         self.makeCenterButtonBackImageConstraint()
         self.makeCenterButtonConstraint()
+        self.makeContentViewConstraint()
         self.makeBackViewConstraint()
     }
 
@@ -188,7 +185,6 @@ class CustomTabBarView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         self.buttonBackImageSize = self.buttonSize + 10
         self.makeView()
         self.makeItemConstraints()

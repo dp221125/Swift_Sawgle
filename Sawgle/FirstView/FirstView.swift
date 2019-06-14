@@ -122,7 +122,10 @@ class FirstView: UIView {
     func makeLoginLabelConstraint() {
         self.loginLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066).isActive = true
     }
-
+    
+    func firstViewAddItem() {
+        
+    }
     func prepareViews() {
         addSubview(self.panHeartImageView)
         self.makePanHeartImageViewConstraint()

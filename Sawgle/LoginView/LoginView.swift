@@ -129,7 +129,7 @@ class LoginView: UIView {
         ])
     }
 
-    func addViewItem() {
+    func addViewItemInLoginView() {
         addSubview(self.logoImageView)
         addSubview(self.titleLabel)
         addSubview(self.textFiedlStackView)
@@ -155,7 +155,7 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "Pale")
-        self.addViewItem()
+        self.addViewItemInLoginView()
         self.makeStackView()
         self.makeViewItemConstraint()
     }
