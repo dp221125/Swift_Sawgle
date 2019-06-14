@@ -81,14 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B406BA4F22B32655009B921D /* SettinvVIew */ = {
+		B406BA4F22B32655009B921D /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
 				B4AF0AF5229BA3B4008EEED7 /* SettingViewController.swift */,
 				B406BA5022B3266A009B921D /* SettingView.swift */,
 				B406BA5822B354AD009B921D /* SettingTableCell.swift */,
 			);
-			path = SettinvVIew;
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 		B42BF59B227AA3CA00D91F09 /* Font */ = {
@@ -114,7 +114,7 @@
 		B4AF0AEE229B80F8008EEED7 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
-				B406BA4F22B32655009B921D /* SettinvVIew */,
+				B406BA4F22B32655009B921D /* SettingView */,
 				B4CE603822A4AC48009E889A /* MyWriteView */,
 				B4AF0AF9229BCBD2008EEED7 /* WriteView */,
 				B4AF0AEF229B810A008EEED7 /* HomeViewController.swift */,
