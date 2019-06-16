@@ -9,8 +9,14 @@
 import UIKit
 
 class ReplyViewController: UIViewController {
-
     
+    let starBarButtonItemStackView = { () -> UIStackView in
+        let starBarButtonItemStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        starBarButtonItemStackView.alignment = .center
+        starBarButtonItemStackView.axis = .vertical
+        starBarButtonItemStackView.spacing = 1
+        return starBarButtonItemStackView
+    }()
     
     // MARK:- viewController Delegate
     override func loadView(){
@@ -23,7 +29,7 @@ class ReplyViewController: UIViewController {
         
         setBackBarButtonItem()
         setStarBarButtonItem(count: 10)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,39 +53,18 @@ class ReplyViewController: UIViewController {
     
     func setStarBarButtonItem(count: Int){
         
-        let starCountLabel = UILabel()
-        let starButton = UIButton(type: .custom)
-        let originImage = #imageLiteral(resourceName: "star")
-        starButton.setImage(originImage, for: .normal)
-        starButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        starButton.sizeToFit()
-        starButton.addTarget(self, action: #selector(starBarButtonItemPressed(_:)), for: UIControl.Event.touchUpInside)
+        let starCountLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let starButtonImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        starCountLabel.font = UIFont(name: "SCDream2", size: 8)
         starCountLabel.text = "\(count)"
-        starCountLabel.sizeToFit()
-        let starBarButtonItemView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        starBarButtonItemView.addSubview(starButton)
-//        starBarButtonItemView.addSubview(starCountLabel)
+        starButtonImageView.image = #imageLiteral(resourceName: "star")
+        starButtonImageView.contentMode = .scaleAspectFit
         
-        // MARK:- Set starBarButtonItem Constraints
-        NSLayoutConstraint.activate([
-            starButton.centerXAnchor.constraint(equalTo: starBarButtonItemView.centerXAnchor),
-//            starButton.topAnchor.constraint(equalTo: starBarButtonItemView.topAnchor),
-            starButton.heightAnchor.constraint(equalTo: starBarButtonItemView.heightAnchor, multiplier: 0.2)
-//            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            contentView.widthAnchor.constraint(equalTo: widthAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: customTabBar.topAnchor, constant: -5),
-//            contentView.topAnchor.constraint(equalTo: topAnchor),
-            ])
+        starBarButtonItemStackView.addArrangedSubview(starButtonImageView)
+        starBarButtonItemStackView.addArrangedSubview(starCountLabel)
         
+        let starBarButtonItem = UIBarButtonItem(customView: starBarButtonItemStackView)
         
-//        NSLayoutConstraint.activate([
-//            starCountLabel.centerXAnchor.constraint(equalTo: starBarButtonItemView.centerXAnchor),
-//            starCountLabel.topAnchor.constraint(equalTo: starButton.topAnchor),
-//            starCountLabel.bottomAnchor.constraint(equalTo: starBarButtonItemView.bottomAnchor)
-//
-//            ])
-//
-        let starBarButtonItem = UIBarButtonItem(customView: starBarButtonItemView)
         self.navigationItem.rightBarButtonItem = starBarButtonItem
     }
     

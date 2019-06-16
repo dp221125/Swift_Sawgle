@@ -447,6 +447,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="QuZ-xp-u8P">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="TFB-ZH-k0R"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="n0d-AI-F4H"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozU-P5-tCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
