@@ -1,16 +1,16 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
-      "filename" : "스플래시.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
+      "filename" : "Launch.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
       "scale" : "3x"
     }
   ],
