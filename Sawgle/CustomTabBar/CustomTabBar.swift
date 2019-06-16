@@ -59,8 +59,6 @@ class CustomTabBar: UIViewController {
         guard let targetView = view as? CustomTabBarView else {
             return
         }
-
-        addChild(self.vcList[index])
         
         let newNavigation = UINavigationController(rootViewController: vcList[index])
         newNavigation.navigationBar.barTintColor = UIColor(named: "Pale")
@@ -69,6 +67,7 @@ class CustomTabBar: UIViewController {
 
         self.navigation = newNavigation
         newNavigation.view.frame = targetView.contentView.bounds
+        addChild(newNavigation)
         targetView.contentView.addSubview(newNavigation.view)
 
         self.vcList[index].didMove(toParent: self)
