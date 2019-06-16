@@ -190,7 +190,7 @@ class MyWriteView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1) 
         self.addViewItemInMyWriteView()
         self.addViewItemConstraint()
         self.addStackItem()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E2CC67C22927C6F006E0B6E /* NewRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CC67B22927C6F006E0B6E /* NewRegisterViewController.swift */; };
+		386CD00E22B64C7800D69166 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386CD00D22B64C7800D69166 /* ReplyViewController.swift */; };
 		B406BA5122B3266A009B921D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B406BA5022B3266A009B921D /* SettingView.swift */; };
 		B406BA5922B354AD009B921D /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B406BA5822B354AD009B921D /* SettingTableCell.swift */; };
 		B4189F8F22929AF100B10E46 /* BirthDayVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1E2CC67B22927C6F006E0B6E /* NewRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegisterViewController.swift; sourceTree = "<group>"; };
+		386CD00D22B64C7800D69166 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		B406BA5022B3266A009B921D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B406BA5822B354AD009B921D /* SettingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
 		B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayVIewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				B4AF0AF9229BCBD2008EEED7 /* WriteView */,
 				B4AF0AEF229B810A008EEED7 /* HomeViewController.swift */,
 				B4AF0AF1229BA35C008EEED7 /* BookMarkViewController.swift */,
+				386CD00D22B64C7800D69166 /* ReplyViewController.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				B4AF0AFB229BCBE6008EEED7 /* WriteViewController.swift in Sources */,
 				B4CE603A22A4AC62009E889A /* MyWriteView.swift in Sources */,
 				B4ED24F02297839A0000598F /* FirstViewController.swift in Sources */,
+				386CD00E22B64C7800D69166 /* ReplyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

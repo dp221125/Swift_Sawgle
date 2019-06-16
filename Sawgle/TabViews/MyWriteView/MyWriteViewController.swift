@@ -23,7 +23,7 @@ class MyWriteViewController: UIViewController {
 
     override func viewDidLoad() {
         navigationItem.title = "mygle"
-
+        
         self.ownView.mySubscribePostView.register(mySubscribePostCell.self, forCellWithReuseIdentifier: "mySubscribePostCell")
         self.ownView.mySubscribePostView.delegate = self
         self.ownView.mySubscribePostView.dataSource = self
@@ -45,7 +45,21 @@ class MyWriteViewController: UIViewController {
     }
 }
 
-extension MyWriteViewController: UICollectionViewDelegate {}
+/// MARK;- UICollectionViewDelegate
+extension MyWriteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let replyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReplyViewController")
+        let nvController = UINavigationController(rootViewController: replyViewController)
+        self.presentDetail(nvController)
+        
+        // 여기서 뷰를 이동시킨다.
+    }
+    
+    
+    
+}
+
 extension MyWriteViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return 10
@@ -66,5 +80,28 @@ extension MyWriteViewController: UICollectionViewDelegateFlowLayout {
         let height = collectionView.bounds.height
 
         return CGSize(width: width, height: height)
+    }
+}
+
+extension UIViewController {
+    
+    func presentDetail(_ viewControllerToPresent: UIViewController) {
+        let transition = CATransition()
+//        transition.duration = 0.25
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
+        present(viewControllerToPresent, animated: false)
+    }
+    
+    func dismissDetail() {
+        let transition = CATransition()
+//        transition.duration = 0.25
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: false)
     }
 }

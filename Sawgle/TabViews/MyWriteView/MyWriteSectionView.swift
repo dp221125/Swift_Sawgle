@@ -13,7 +13,7 @@ class MyWriteSectionView: UIView {
     let sectionTitleLabel: UILabel = {
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.textColor = UIColor(named: "PaleBrown")
-        sectionTitleLabel.font = UIFont(name: "S-CoreDream-5Regular", size: 15)
+        sectionTitleLabel.font = UIFont(name: "S-CoreBream-5Regular", size: 15)
         sectionTitleLabel.baselineAdjustment = .alignCenters
         return sectionTitleLabel
     }()
@@ -29,6 +29,8 @@ class MyWriteSectionView: UIView {
         enterImageView.image = UIImage(named: "Entrance")
         return enterImageView
     }()
+    
+    
     
     func makeSectionTitleLabelConstraint() {
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
