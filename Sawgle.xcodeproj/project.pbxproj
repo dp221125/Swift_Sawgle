@@ -12,8 +12,9 @@
 		B406BA5922B354AD009B921D /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B406BA5822B354AD009B921D /* SettingTableCell.swift */; };
 		B4189F8F22929AF100B10E46 /* BirthDayVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */; };
 		B42BF59D227AAAC300D91F09 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BF59C227AAAC300D91F09 /* LoginView.swift */; };
+		B470905422B71CC90049FB1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B470905322B71CC90049FB1C /* Assets.xcassets */; };
 		B4AF0AEB229B7DFC008EEED7 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AEA229B7DFC008EEED7 /* CustomTabBarView.swift */; };
-		B4AF0AED229B804B008EEED7 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AEC229B804B008EEED7 /* CustomTabBar.swift */; };
+		B4AF0AED229B804B008EEED7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AEC229B804B008EEED7 /* CustomTabBarController.swift */; };
 		B4AF0AF0229B810A008EEED7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AEF229B810A008EEED7 /* HomeViewController.swift */; };
 		B4AF0AF2229BA35C008EEED7 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AF1229BA35C008EEED7 /* BookMarkViewController.swift */; };
 		B4AF0AF4229BA399008EEED7 /* MyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF0AF3229BA399008EEED7 /* MyWriteViewController.swift */; };
@@ -28,7 +29,6 @@
 		B4BDA9CC227A87D80064B561 /* FontList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BDA9CB227A87D80064B561 /* FontList.swift */; };
 		B4CE603A22A4AC62009E889A /* MyWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE603922A4AC62009E889A /* MyWriteView.swift */; };
 		B4CE603C22A4E7CD009E889A /* MyWriteSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE603B22A4E7CD009E889A /* MyWriteSectionView.swift */; };
-		B4CE603E22A4F373009E889A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CE603D22A4F373009E889A /* Assets.xcassets */; };
 		B4CE604022A4FBAF009E889A /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4CE603F22A4FBA9009E889A /* SCDream2.otf */; };
 		B4CE604222A50526009E889A /* MySubscribePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE604122A50526009E889A /* MySubscribePostCell.swift */; };
 		B4ED24EC22977AC90000598F /* SCDream4.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4189F9022929E4C00B10E46 /* SCDream4.otf */; };
@@ -45,8 +45,9 @@
 		B4189F9022929E4C00B10E46 /* SCDream4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream4.otf; sourceTree = "<group>"; };
 		B4189F9122929E5400B10E46 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
 		B42BF59C227AAAC300D91F09 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B470905322B71CC90049FB1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4AF0AEA229B7DFC008EEED7 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
-		B4AF0AEC229B804B008EEED7 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		B4AF0AEC229B804B008EEED7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		B4AF0AEF229B810A008EEED7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B4AF0AF1229BA35C008EEED7 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
 		B4AF0AF3229BA399008EEED7 /* MyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		B4BDA9CB227A87D80064B561 /* FontList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontList.swift; sourceTree = "<group>"; };
 		B4CE603922A4AC62009E889A /* MyWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteView.swift; sourceTree = "<group>"; };
 		B4CE603B22A4E7CD009E889A /* MyWriteSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWriteSectionView.swift; sourceTree = "<group>"; };
-		B4CE603D22A4F373009E889A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CE603F22A4FBA9009E889A /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
 		B4CE604122A50526009E889A /* MySubscribePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubscribePostCell.swift; sourceTree = "<group>"; };
 		B4ED24EF2297839A0000598F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B4AF0AEA229B7DFC008EEED7 /* CustomTabBarView.swift */,
-				B4AF0AEC229B804B008EEED7 /* CustomTabBar.swift */,
+				B4AF0AEC229B804B008EEED7 /* CustomTabBarController.swift */,
 			);
 			path = CustomTabBar;
 			sourceTree = "<group>";
@@ -151,7 +151,7 @@
 		B4BDA9AE227A759E0064B561 /* Sawgle */ = {
 			isa = PBXGroup;
 			children = (
-				B4CE603D22A4F373009E889A /* Assets.xcassets */,
+				B470905322B71CC90049FB1C /* Assets.xcassets */,
 				B42BF59B227AA3CA00D91F09 /* Font */,
 				B4ED24EE229783730000598F /* FirstView */,
 				B4ED24F1229784D70000598F /* LoginView */,
@@ -259,8 +259,8 @@
 				B4BDA9BA227A759F0064B561 /* LaunchScreen.storyboard in Resources */,
 				B4BDA9C8227A83CE0064B561 /* SSShinb7.ttf in Resources */,
 				B4ED24ED22977ACB0000598F /* SCDream5.otf in Resources */,
+				B470905422B71CC90049FB1C /* Assets.xcassets in Resources */,
 				B4CE604022A4FBAF009E889A /* SCDream2.otf in Resources */,
-				B4CE603E22A4F373009E889A /* Assets.xcassets in Resources */,
 				B4BDA9B5227A759E0064B561 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +283,7 @@
 				B4AF0AF6229BA3B4008EEED7 /* SettingViewController.swift in Sources */,
 				B4BDA9B2227A759E0064B561 /* FirstView.swift in Sources */,
 				B4ED24F3229784F90000598F /* LoginViewController.swift in Sources */,
-				B4AF0AED229B804B008EEED7 /* CustomTabBar.swift in Sources */,
+				B4AF0AED229B804B008EEED7 /* CustomTabBarController.swift in Sources */,
 				B4AF0AF0229B810A008EEED7 /* HomeViewController.swift in Sources */,
 				B4AF0AF4229BA399008EEED7 /* MyWriteViewController.swift in Sources */,
 				B4CE604222A50526009E889A /* MySubscribePostCell.swift in Sources */,
