@@ -13,7 +13,7 @@ class ReplyView: UIView {
     // MARK: Setting Views
     let replyTableView: UITableView = {
         let replyTableView = UITableView(frame: CGRect.zero, style: .grouped)
-        replyTableView.backgroundColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        replyTableView.backgroundColor = UIColor(named: "PinkishGrey")
         replyTableView.separatorStyle = .none
         return replyTableView
     }()

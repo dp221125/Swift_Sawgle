@@ -12,12 +12,37 @@ class ReplyViewController: UIViewController {
     
     let replyTextTableViewCellIdentifier = "replyTextTableViewCell"
     let replyPostTableViewCellIdentifier = "replyPostTableViewCell"
+    //    let replyTextHeaderTableViewCellIdentifier = "ReplyTextHeaderTableViewCell"
     
     lazy var replyView: ReplyView = {
         guard let replyView = view as? ReplyView else { return ReplyView() }
         return replyView
     }()
     
+    // MARK: navigationItemTitle UI
+    let navigationItemTitleStackView: UIStackView = {
+        let navigationItemTitleStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        navigationItemTitleStackView.alignment = .center
+        navigationItemTitleStackView.axis = .vertical
+        navigationItemTitleStackView.spacing = 1
+        return navigationItemTitleStackView
+    }()
+    
+    let titleLabel: UILabel = {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleLabel.font = UIFont.init(name: "S-CoreDream-2ExtraLight", size: 12.3)
+        titleLabel.tintColor = UIColor(named: "greyishBrown")
+        return titleLabel
+    }()
+    
+    let titleImageView: UIImageView = {
+        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleImageView.image = #imageLiteral(resourceName: "logo")
+        titleImageView.contentMode = .scaleAspectFit
+        return titleImageView
+    }()
+    
+    // MARK: starBarButtonItem UI
     let starBarButtonItemStackView: UIStackView = {
         let starBarButtonItemStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         starBarButtonItemStackView.alignment = .center
@@ -26,12 +51,18 @@ class ReplyViewController: UIViewController {
         return starBarButtonItemStackView
     }()
     
-    let navigationItemTitleStackView: UIStackView = {
-        let navigationItemTitleStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        navigationItemTitleStackView.alignment = .center
-        navigationItemTitleStackView.axis = .vertical
-        navigationItemTitleStackView.spacing = 1
-        return navigationItemTitleStackView
+    let starCountLabel: UILabel = {
+        let starCountLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        starCountLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 10)
+        starCountLabel.tintColor = UIColor(named: "greyishBrown")
+        return starCountLabel
+    }()
+    
+    let starButtonImageView: UIImageView = {
+        let starButtonImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        starButtonImageView.image = #imageLiteral(resourceName: "star")
+        starButtonImageView.contentMode = .scaleAspectFit
+        return starButtonImageView
     }()
     
     // MARK:- viewController Delegate
@@ -47,6 +78,7 @@ class ReplyViewController: UIViewController {
         setBackBarButtonItem()
         setNavigationItemTitleStackView(titleName: "웃긴대학원")
         setStarBarButtonItem(count: 10)
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,47 +101,48 @@ class ReplyViewController: UIViewController {
     }
     
     func setNavigationItemTitleStackView(titleName: String){
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         titleLabel.text = "\(titleName)"
-        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        titleImageView.image = #imageLiteral(resourceName: "logo")
-        titleImageView.contentMode = .scaleAspectFit
-        
         navigationItemTitleStackView.addArrangedSubview(titleImageView)
         navigationItemTitleStackView.addArrangedSubview(titleLabel)
-        
         navigationItem.titleView = navigationItemTitleStackView
     }
     
-    func setStarBarButtonItem(count: Int){
-        
-        let starCountLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let starButtonImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        starCountLabel.font = UIFont(name: "SCDream2", size: 8)
-        starCountLabel.text = "\(count)"
-        starButtonImageView.image = #imageLiteral(resourceName: "star")
-        starButtonImageView.contentMode = .scaleAspectFit
-        
-        starBarButtonItemStackView.addArrangedSubview(starButtonImageView)
-        starBarButtonItemStackView.addArrangedSubview(starCountLabel)
+    func setStarBarButtonItem(count: Int) {
+        self.starCountLabel.text = "\(count)"
+        self.starBarButtonItemStackView.addArrangedSubview(starButtonImageView)
+        self.starBarButtonItemStackView.addArrangedSubview(starCountLabel)
         
         let starBarButtonItem = UIBarButtonItem(customView: starBarButtonItemStackView)
-        
         self.navigationItem.rightBarButtonItem = starBarButtonItem
     }
     
-    func registerTableViewCell(){
+    func registerTableViewCell() {
         self.replyView.replyTableView.register(ReplyTextTableViewCell.self, forCellReuseIdentifier: self.replyTextTableViewCellIdentifier)
         self.replyView.replyTableView.register(ReplyPostTableViewCell.self, forCellReuseIdentifier: self.replyPostTableViewCellIdentifier)
     }
     
+    func setConstraints() {
+        self.starButtonImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.starCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            starButtonImageView.heightAnchor.constraint(equalTo: self.starCountLabel.heightAnchor, multiplier: 0.63)
+            ])
+        
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.titleImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.titleImageView.heightAnchor.constraint(equalTo: self.titleLabel.heightAnchor, multiplier: 0.63)
+            
+            ])
+    }
+    
     // MARK:- TouchEvents Methods
-    @objc func backButtonPressed(_ sender: UIButton){
+    @objc func backButtonPressed(_ sender: UIButton) {
         print("backButtonItemPressed")
         self.dismissDetail()
     }
     
-    @objc func starBarButtonItemPressed(_ sender: UIButton){
+    @objc func starBarButtonItemPressed(_ sender: UIButton) {
         print("rightBarButtonItemPressed")
     }
 }
@@ -133,9 +166,22 @@ extension ReplyViewController: UITableViewDataSource {
         }
         else {
             guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
-            replyPostTableViewCell.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+            replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
             return replyPostTableViewCell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let textHeaderView = ReplyTextHeaderView()
+            textHeaderView.backgroundColor = UIColor(named: "Pale")
+            return textHeaderView
+        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 80 : UITableView.automaticDimension
     }
 }
 
