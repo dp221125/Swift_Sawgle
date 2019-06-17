@@ -59,11 +59,6 @@ class CustomTabBarController: UIViewController {
         guard let targetView = view as? CustomTabBarView else {
             return
         }
-<<<<<<< HEAD:Sawgle/CustomTabBar/CustomTabBar.swift
-
-//        addChild(self.vcList[index])
-=======
->>>>>>> upstream/master:Sawgle/CustomTabBar/CustomTabBarController.swift
         
         let newNavigation = UINavigationController(rootViewController: vcList[index])
         newNavigation.navigationBar.barTintColor = UIColor(named: "Pale")

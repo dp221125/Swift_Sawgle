@@ -83,24 +83,26 @@ extension MyWriteViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UIViewController Extansion
+// MARK: viewController push/pop 화면전환 함수구현
 extension UIViewController {
     
     func presentDetail(_ viewControllerToPresent: UIViewController) {
+        guard let caLayer: CALayer = self.view.window?.layer else { return }
         let transition = CATransition()
-//        transition.duration = 0.25
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromRight
-        self.view.window!.layer.add(transition, forKey: kCATransition)
+        caLayer.add(transition, forKey: kCATransition)
         
         present(viewControllerToPresent, animated: false)
     }
     
     func dismissDetail() {
+        guard let caLayer: CALayer = self.view.window?.layer else { return }
         let transition = CATransition()
-//        transition.duration = 0.25
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
-        self.view.window!.layer.add(transition, forKey: kCATransition)
+        caLayer.add(transition, forKey: kCATransition)
         
         dismiss(animated: false)
     }

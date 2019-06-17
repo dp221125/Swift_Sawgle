@@ -10,21 +10,13 @@ import UIKit
 
 class ReplyViewController: UIViewController {
     
-    let replyTableView: UITableView = {
-        let replyTableView = UITableView(frame: CGRect.zero, style: .grouped)
-        replyTableView.tableHeaderView = UIView()
-        replyTableView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-        replyTableView.separatorStyle = .none
-        return replyTableView
-    }()
+    let replyTextTableViewCellIdentifier = "replyTextTableViewCell"
+    let replyPostTableViewCellIdentifier = "replyPostTableViewCell"
     
-//    let settingTableView: UITableView = {
-//        let settingTableView = UITableView(frame: CGRect.zero, style: .grouped)
-//        settingTableView.tableFooterView = UIView()
-//        settingTableView.backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
-//        settingTableView.separatorStyle = .none
-//        return settingTableView
-//    }()
+    lazy var replyView: ReplyView = {
+        guard let replyView = view as? ReplyView else { return ReplyView() }
+        return replyView
+    }()
     
     let starBarButtonItemStackView: UIStackView = {
         let starBarButtonItemStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -44,17 +36,17 @@ class ReplyViewController: UIViewController {
     
     // MARK:- viewController Delegate
     override func loadView(){
-        self.view = UIView()
-        self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.view = ReplyView()
     }
     
     override func viewDidLoad() {
         
+        self.replyView.replyTableView.dataSource = self
+        self.replyView.replyTableView.delegate = self
+        registerTableViewCell()
         setBackBarButtonItem()
         setNavigationItemTitleStackView(titleName: "웃긴대학원")
         setStarBarButtonItem(count: 10)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +98,11 @@ class ReplyViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = starBarButtonItem
     }
     
+    func registerTableViewCell(){
+        self.replyView.replyTableView.register(ReplyTextTableViewCell.self, forCellReuseIdentifier: self.replyTextTableViewCellIdentifier)
+        self.replyView.replyTableView.register(ReplyPostTableViewCell.self, forCellReuseIdentifier: self.replyPostTableViewCellIdentifier)
+    }
+    
     // MARK:- TouchEvents Methods
     @objc func backButtonPressed(_ sender: UIButton){
         print("backButtonItemPressed")
@@ -117,5 +114,31 @@ class ReplyViewController: UIViewController {
     }
 }
 
+extension ReplyViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 { return 1 }
+        else { return 10 }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            guard let replyTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyTextTableViewCellIdentifier, for: indexPath) as? ReplyTextTableViewCell else { return UITableViewCell() }
+            replyTextTableViewCell.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            return replyTextTableViewCell
+        }
+        else {
+            guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
+            replyPostTableViewCell.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+            return replyPostTableViewCell
+        }
+    }
+}
 
-
+extension ReplyViewController: UITableViewDelegate {
+    
+}
