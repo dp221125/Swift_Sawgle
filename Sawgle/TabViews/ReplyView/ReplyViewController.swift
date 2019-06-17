@@ -10,12 +10,36 @@ import UIKit
 
 class ReplyViewController: UIViewController {
     
-    let starBarButtonItemStackView = { () -> UIStackView in
+    let replyTableView: UITableView = {
+        let replyTableView = UITableView(frame: CGRect.zero, style: .grouped)
+        replyTableView.tableHeaderView = UIView()
+        replyTableView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        replyTableView.separatorStyle = .none
+        return replyTableView
+    }()
+    
+//    let settingTableView: UITableView = {
+//        let settingTableView = UITableView(frame: CGRect.zero, style: .grouped)
+//        settingTableView.tableFooterView = UIView()
+//        settingTableView.backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
+//        settingTableView.separatorStyle = .none
+//        return settingTableView
+//    }()
+    
+    let starBarButtonItemStackView: UIStackView = {
         let starBarButtonItemStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         starBarButtonItemStackView.alignment = .center
         starBarButtonItemStackView.axis = .vertical
         starBarButtonItemStackView.spacing = 1
         return starBarButtonItemStackView
+    }()
+    
+    let navigationItemTitleStackView: UIStackView = {
+        let navigationItemTitleStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        navigationItemTitleStackView.alignment = .center
+        navigationItemTitleStackView.axis = .vertical
+        navigationItemTitleStackView.spacing = 1
+        return navigationItemTitleStackView
     }()
     
     // MARK:- viewController Delegate
@@ -25,10 +49,11 @@ class ReplyViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationItem.title = "웃긴대학원"
         
         setBackBarButtonItem()
+        setNavigationItemTitleStackView(titleName: "웃긴대학원")
         setStarBarButtonItem(count: 10)
+        
         
     }
     
@@ -49,6 +74,19 @@ class ReplyViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: UIControl.Event.touchUpInside)
         let backBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = backBarButtonItem
+    }
+    
+    func setNavigationItemTitleStackView(titleName: String){
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleLabel.text = "\(titleName)"
+        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        titleImageView.image = #imageLiteral(resourceName: "logo")
+        titleImageView.contentMode = .scaleAspectFit
+        
+        navigationItemTitleStackView.addArrangedSubview(titleImageView)
+        navigationItemTitleStackView.addArrangedSubview(titleLabel)
+        
+        navigationItem.titleView = navigationItemTitleStackView
     }
     
     func setStarBarButtonItem(count: Int){
