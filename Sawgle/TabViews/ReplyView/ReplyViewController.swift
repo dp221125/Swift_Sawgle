@@ -46,8 +46,9 @@ class ReplyViewController: UIViewController {
         return UITapGestureRecognizer(target: self, action: #selector(replyTableViewPressed(_:)))
     }()
     
-    lazy var replyViewPostButtonTapGestureRecognizer: UITapGestureRecognizer = {
-        let replyViewPostButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(replyPostButtonPressed(_:)))
+    lazy var replyViewPostButtonLongPressGestureRecognizer: UILongPressGestureRecognizer = {
+        let replyViewPostButtonRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(replyPostButtonPressed(_:)))
+        replyViewPostButtonRecognizer.minimumPressDuration = 0
         return replyViewPostButtonRecognizer
     }()
     
@@ -197,12 +198,12 @@ class ReplyViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func replyPostButtonPressed(_ sender: UITapGestureRecognizer) {
+    @objc func replyPostButtonPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .ended {
             // POST 처리 부분
             print("replyPostButtonPressed")
             replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        }
+        } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1) 	}
     }
 }
 
@@ -249,7 +250,7 @@ extension ReplyViewController: UITableViewDelegate {
         case .postTableViewSection:
             replyPostHeaderView.backgroundColor = UIColor(named: "Pale")
             replyPostHeaderView.postHeaderButton.isUserInteractionEnabled = true
-            replyPostHeaderView.postHeaderButton.addGestureRecognizer(replyViewPostButtonTapGestureRecognizer)
+            replyPostHeaderView.postHeaderButton.addGestureRecognizer(replyViewPostButtonLongPressGestureRecognizer)
             return replyPostHeaderView
         }
     }
