@@ -29,6 +29,10 @@ class ReplyViewController: UIViewController {
         return replyView
     }()
     
+    let replyPostHeaderView: ReplyPostHeaderView = {
+        let replyPostHeaderView = ReplyPostHeaderView()
+        return replyPostHeaderView
+    }()
     // MARK: tapGestureRecognizer
     lazy var starCountButtonTapGestureRecognizer: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(starBarButtonImageViewPressed(_:)))
@@ -43,7 +47,8 @@ class ReplyViewController: UIViewController {
     }()
     
     lazy var replyViewPostButtonTapGestureRecognizer: UITapGestureRecognizer = {
-        return UITapGestureRecognizer(target: self, action: #selector(replyPostButtonPressed(_:)))
+        let replyViewPostButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(replyPostButtonPressed(_:)))
+        return replyViewPostButtonRecognizer
     }()
     
     // MARK: navigationItemTitle UI
@@ -193,7 +198,11 @@ class ReplyViewController: UIViewController {
     }
     
     @objc func replyPostButtonPressed(_ sender: UITapGestureRecognizer) {
-        print("replyPostButtonPressed")
+        if sender.state == .ended {
+            // POST 처리 부분
+            print("replyPostButtonPressed")
+            replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        }
     }
 }
 
@@ -238,8 +247,8 @@ extension ReplyViewController: UITableViewDelegate {
             replyTextHeaderView.heartImageView.addGestureRecognizer(heartButtonTapGestureRecognizer)
             return replyTextHeaderView
         case .postTableViewSection:
-            let replyPostHeaderView = ReplyPostHeaderView()
             replyPostHeaderView.backgroundColor = UIColor(named: "Pale")
+            replyPostHeaderView.postHeaderButton.isUserInteractionEnabled = true
             replyPostHeaderView.postHeaderButton.addGestureRecognizer(replyViewPostButtonTapGestureRecognizer)
             return replyPostHeaderView
         }

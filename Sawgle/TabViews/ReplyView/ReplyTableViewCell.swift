@@ -201,7 +201,7 @@ class ReplyPostHeaderView: UIView {
         postHeaderButton.titleLabel?.adjustsFontSizeToFitWidth = true
         postHeaderButton.titleLabel?.font = UIFont(name:"S-CoreDream-2ExtraLight", size: 10)
         postHeaderButton.titleLabel?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        postHeaderButton.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        postHeaderButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         return postHeaderButton
     }()
     
