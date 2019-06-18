@@ -29,6 +29,19 @@ class ReplyViewController: UIViewController {
         return replyView
     }()
     
+    // MARK: tapGestureRecognizer
+    lazy var starCountButtonTapGestureRecognizer: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(starBarButtonImageViewPressed(_:)))
+    }()
+    
+    lazy var heartButtonTapGestureRecognizer: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(heartImageViewPressed(_:)))
+    }()
+    
+    lazy var replyTableViewTapGestureRecognizer: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(replyTableViewPressed(_:)))
+    }()
+    
     // MARK: navigationItemTitle UI
     let navigationItemTitleStackView: UIStackView = {
         let navigationItemTitleStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -82,10 +95,7 @@ class ReplyViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        self.replyView.replyTableView.dataSource = self
-        self.replyView.replyTableView.delegate = self
-        self.replyView.replyTableView.estimatedRowHeight = 50
-        self.replyView.replyTableView.rowHeight = UITableView.automaticDimension
+        setReplyTableView()
         registerTableViewCell()
         setBackBarButtonItem()
         setNavigationItemTitleStackView(titleName: "웃긴대학원")
@@ -110,6 +120,14 @@ class ReplyViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backBarButtonItem
     }
     
+    func setReplyTableView() {
+        self.replyView.replyTableView.dataSource = self
+        self.replyView.replyTableView.delegate = self
+        self.replyView.replyTableView.estimatedRowHeight = 50
+        self.replyView.replyTableView.rowHeight = UITableView.automaticDimension
+        self.replyView.replyTableView.addGestureRecognizer(replyTableViewTapGestureRecognizer)
+    }
+    
     func setNavigationItemTitleStackView(titleName: String){
         titleLabel.text = "\(titleName)"
         navigationItemTitleStackView.addArrangedSubview(titleImageView)
@@ -121,7 +139,7 @@ class ReplyViewController: UIViewController {
         self.starCountLabel.text = "\(count)"
         self.starBarButtonItemStackView.addArrangedSubview(starButtonImageView)
         self.starBarButtonItemStackView.addArrangedSubview(starCountLabel)
-        
+        self.starBarButtonItemStackView.addGestureRecognizer(starCountButtonTapGestureRecognizer)
         let starBarButtonItem = UIBarButtonItem(customView: starBarButtonItemStackView)
         self.navigationItem.rightBarButtonItem = starBarButtonItem
     }
@@ -138,7 +156,7 @@ class ReplyViewController: UIViewController {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleImageView.translatesAutoresizingMaskIntoConstraints = false
         self.starBarButtonItemStackView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             starButtonImageView.heightAnchor.constraint(equalTo: starCountLabel.heightAnchor, multiplier: 0.63),
             starButtonImageView.topAnchor.constraint(equalTo: starBarButtonItemStackView.topAnchor, constant: 5)
@@ -156,8 +174,18 @@ class ReplyViewController: UIViewController {
         self.dismissDetail()
     }
     
-    @objc func starBarButtonItemPressed(_ sender: UIButton) {
-        print("rightBarButtonItemPressed")
+    // MARK: tapGestureRecognizer Event Methods
+    @objc func starBarButtonImageViewPressed(_ sender: UITapGestureRecognizer) {
+        print("starBarButtonItemPressed")
+    }
+    
+    @objc func heartImageViewPressed(_ sender: UITapGestureRecognizer) {
+        print("hearImageViewPressed")
+    }
+    
+    @objc func replyTableViewPressed(_ sender: UITapGestureRecognizer) {
+        print("tableViewPressed")
+        self.view.endEditing(true)
     }
 }
 
@@ -194,9 +222,11 @@ extension ReplyViewController: UITableViewDelegate {
         
         switch replyTableViewSection {
         case .textTableViewSection:
-            let textTextHeaderView = ReplyTextHeaderView()
-            textTextHeaderView.backgroundColor = UIColor(named: "Pale")
-            return textTextHeaderView
+            let replyTextHeaderView = ReplyTextHeaderView()
+            replyTextHeaderView.backgroundColor = UIColor(named: "Pale")
+            replyTextHeaderView.heartImageView.isUserInteractionEnabled = true
+            replyTextHeaderView.heartImageView.addGestureRecognizer(heartButtonTapGestureRecognizer)
+            return replyTextHeaderView
         case .postTableViewSection:
             let replyPostHeaderView = ReplyPostHeaderView()
             replyPostHeaderView.backgroundColor = UIColor(named: "Pale")
