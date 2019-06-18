@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j06-v5-vNG">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SCDream4.otf">
+            <string>S-CoreDream-4Regular</string>
+        </array>
+        <array key="SSShinb7.ttf">
+            <string>SangSangShinb7</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--New Posting View Controller-->
+        <scene sceneID="KPC-B8-vYC">
+            <objects>
+                <viewController id="j06-v5-vNG" customClass="NewPostingViewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DZa-Rc-L8e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80b-y1-ugL">
+                                <rect key="frame" x="0.0" y="103" width="414" height="793"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="당신의 생각을 적어주세요." translatesAutoresizingMaskIntoConstraints="NO" id="BWS-wl-ekM">
+                                        <rect key="frame" x="22" y="66" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Wt0-TE-Rpi"/>
+                                            <constraint firstAttribute="height" constant="128" id="nBE-Y3-QdZ"/>
+                                        </constraints>
+                                        <color key="textColor" name="brownishGray"/>
+                                        <fontDescription key="fontDescription" name="SangSangShinb7" family="SangSangShinb7" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="EvJ-cZ-JBr">
+                                        <rect key="frame" x="336" y="709" width="52" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="NvY-gQ-1PC"/>
+                                            <constraint firstAttribute="width" constant="52" id="U7L-Ad-UCo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;2019 .05 .19&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axi-Ie-zn4">
+                                        <rect key="frame" x="164.5" y="19" width="85" height="22"/>
+                                        <fontDescription key="fontDescription" name="SangSangShinb7" family="SangSangShinb7" pointSize="17"/>
+                                        <color key="textColor" name="brownishGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="axi-Ie-zn4" firstAttribute="top" secondItem="80b-y1-ugL" secondAttribute="top" constant="19" id="CZt-Id-Dsc"/>
+                                    <constraint firstAttribute="bottom" secondItem="EvJ-cZ-JBr" secondAttribute="bottom" constant="32" id="DJk-CD-Dfs"/>
+                                    <constraint firstItem="BWS-wl-ekM" firstAttribute="top" secondItem="80b-y1-ugL" secondAttribute="top" constant="66" id="bZr-2e-36v"/>
+                                    <constraint firstAttribute="trailing" secondItem="EvJ-cZ-JBr" secondAttribute="trailing" constant="26" id="mDq-bB-YAh"/>
+                                    <constraint firstItem="BWS-wl-ekM" firstAttribute="leading" secondItem="80b-y1-ugL" secondAttribute="leading" constant="22" id="o6b-ly-ye4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="취소" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBr-Ob-xwz">
+                                <rect key="frame" x="20.5" y="59.5" width="26" height="16.5"/>
+                                <fontDescription key="fontDescription" name="S-CoreDream-4Regular" family="S-Core Dream" pointSize="13.300000190734863"/>
+                                <color key="textColor" name="PinkishGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="써글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8F-yF-BKS">
+                                <rect key="frame" x="367.5" y="59.5" width="26" height="16"/>
+                                <fontDescription key="fontDescription" name="S-CoreDream-4Regular" family="S-Core Dream" pointSize="13.300000190734863"/>
+                                <color key="textColor" name="PinkishGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hot-4E-9JW">
+                                <rect key="frame" x="187" y="50" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="843-ij-1qD"/>
+                                    <constraint firstAttribute="width" constant="40" id="Mot-gW-XlU"/>
+                                    <constraint firstAttribute="width" secondItem="hot-4E-9JW" secondAttribute="height" multiplier="8:7" id="ZAt-l6-RHy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99215686274509807" green="0.92156862745098034" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="80b-y1-ugL" secondAttribute="bottom" id="0mS-mc-eOM"/>
+                            <constraint firstItem="hot-4E-9JW" firstAttribute="centerX" secondItem="80b-y1-ugL" secondAttribute="centerX" id="3bO-ba-SOW"/>
+                            <constraint firstItem="y8F-yF-BKS" firstAttribute="top" secondItem="4qa-w5-poD" secondAttribute="top" constant="15.67" id="5Rt-jU-Wg6"/>
+                            <constraint firstItem="4qa-w5-poD" firstAttribute="trailing" secondItem="y8F-yF-BKS" secondAttribute="trailing" constant="20.329999999999998" id="7AR-NB-MDz"/>
+                            <constraint firstItem="axi-Ie-zn4" firstAttribute="centerX" secondItem="hot-4E-9JW" secondAttribute="centerX" id="AFW-an-8gm"/>
+                            <constraint firstItem="hot-4E-9JW" firstAttribute="centerY" secondItem="FBr-Ob-xwz" secondAttribute="centerY" id="Aoj-1s-0CQ"/>
+                            <constraint firstAttribute="bottom" secondItem="80b-y1-ugL" secondAttribute="bottom" id="CdK-OH-hIJ"/>
+                            <constraint firstAttribute="trailing" secondItem="80b-y1-ugL" secondAttribute="trailing" id="SGF-Y5-6gG"/>
+                            <constraint firstItem="FBr-Ob-xwz" firstAttribute="top" secondItem="4qa-w5-poD" secondAttribute="top" constant="15.33" id="XpS-iI-uQF"/>
+                            <constraint firstItem="FBr-Ob-xwz" firstAttribute="leading" secondItem="4qa-w5-poD" secondAttribute="leading" constant="20.329999999999998" id="ZKk-wy-bCR"/>
+                            <constraint firstItem="hot-4E-9JW" firstAttribute="centerY" secondItem="y8F-yF-BKS" secondAttribute="centerY" id="b5B-JP-WFP"/>
+                            <constraint firstItem="80b-y1-ugL" firstAttribute="top" secondItem="4qa-w5-poD" secondAttribute="top" constant="59" id="bEa-Op-yLR"/>
+                            <constraint firstItem="80b-y1-ugL" firstAttribute="leading" secondItem="4qa-w5-poD" secondAttribute="leading" id="paX-ku-MOt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4qa-w5-poD"/>
+                    </view>
+                    <connections>
+                        <outlet property="postingView" destination="80b-y1-ugL" id="ESq-Le-AUD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gJG-eA-SM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159.375" y="197.53521126760563"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Camera" width="51.5" height="51.5"/>
+        <image name="logo" width="158" height="137.5"/>
+        <namedColor name="PinkishGrey">
+            <color red="0.81960784313725488" green="0.75294117647058822" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brownishGray">
+            <color red="0.49411764705882355" green="0.41960784313725491" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
