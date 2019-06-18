@@ -49,7 +49,7 @@ class MyWriteViewController: UIViewController {
 extension MyWriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let replyViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReplyViewController")
+        let replyViewController = ReplyViewController()
         let nvController = UINavigationController(rootViewController: replyViewController)
         self.presentDetail(nvController)
         

@@ -8,11 +8,21 @@
 
 import UIKit
 
+
+/// MARK: ReplyTableView 섹션 분류
+///
+/// - textTableViewSection: 메인 타이을, 텍스트뷰 섹션
+/// - postTableViewSection: 댓글입력, 댓글텍스트뷰 섹션
+enum ReplyTableViewSections: Int {
+    case textTableViewSection = 0
+    case postTableViewSection = 1
+}
+
 class ReplyViewController: UIViewController {
     
+    // MARK:- Properties
     let replyTextTableViewCellIdentifier = "replyTextTableViewCell"
     let replyPostTableViewCellIdentifier = "replyPostTableViewCell"
-    //    let replyTextHeaderTableViewCellIdentifier = "ReplyTextHeaderTableViewCell"
     
     lazy var replyView: ReplyView = {
         guard let replyView = view as? ReplyView else { return ReplyView() }
@@ -30,7 +40,7 @@ class ReplyViewController: UIViewController {
     
     let titleLabel: UILabel = {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        titleLabel.font = UIFont.init(name: "S-CoreDream-2ExtraLight", size: 12.3)
+        titleLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 12.3)
         titleLabel.tintColor = UIColor(named: "greyishBrown")
         return titleLabel
     }()
@@ -71,9 +81,11 @@ class ReplyViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.replyView.replyTableView.dataSource = self
         self.replyView.replyTableView.delegate = self
+        self.replyView.replyTableView.estimatedRowHeight = 50
+        self.replyView.replyTableView.rowHeight = UITableView.automaticDimension
         registerTableViewCell()
         setBackBarButtonItem()
         setNavigationItemTitleStackView(titleName: "웃긴대학원")
@@ -84,8 +96,6 @@ class ReplyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("ReplyView")
     }
-    
-    // MARK:- setConstraints
     
     // MARK:- setting Methods
     func setBackBarButtonItem(){
@@ -121,6 +131,7 @@ class ReplyViewController: UIViewController {
         self.replyView.replyTableView.register(ReplyPostTableViewCell.self, forCellReuseIdentifier: self.replyPostTableViewCellIdentifier)
     }
     
+    // MARK: setConstraints
     func setConstraints() {
         self.starButtonImageView.translatesAutoresizingMaskIntoConstraints = false
         self.starCountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -155,13 +166,14 @@ extension ReplyViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 { return 1 }
-        else { return 10 }
+        else if section == 1 { return 10 }
+        else { return 0 }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             guard let replyTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyTextTableViewCellIdentifier, for: indexPath) as? ReplyTextTableViewCell else { return UITableViewCell() }
-            replyTextTableViewCell.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            replyTextTableViewCell.backgroundColor = UIColor(named: "Pale")
             return replyTextTableViewCell
         }
         else {
@@ -170,21 +182,40 @@ extension ReplyViewController: UITableViewDataSource {
             return replyPostTableViewCell
         }
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let textHeaderView = ReplyTextHeaderView()
-            textHeaderView.backgroundColor = UIColor(named: "Pale")
-            return textHeaderView
-        }
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 80 : UITableView.automaticDimension
-    }
 }
 
 extension ReplyViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let replyTableViewSection = ReplyTableViewSections(rawValue: section) else { return UIView() }
+        
+        switch replyTableViewSection {
+        case .textTableViewSection:
+            let textTextHeaderView = ReplyTextHeaderView()
+            textTextHeaderView.backgroundColor = UIColor(named: "Pale")
+            return textTextHeaderView
+        case .postTableViewSection:
+            let replyPostHeaderView = ReplyPostHeaderView()
+            replyPostHeaderView.backgroundColor = UIColor(named: "Pale")
+            return replyPostHeaderView
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let replyTableViewSection = ReplyTableViewSections(rawValue: section) else { return .leastNonzeroMagnitude}
+        
+        switch replyTableViewSection {
+        case .textTableViewSection: return 80
+        case .postTableViewSection: return 80
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
 }

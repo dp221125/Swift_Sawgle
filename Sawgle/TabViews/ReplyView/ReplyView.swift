@@ -15,20 +15,9 @@ class ReplyView: UIView {
         let replyTableView = UITableView(frame: CGRect.zero, style: .grouped)
         replyTableView.backgroundColor = UIColor(named: "PinkishGrey")
         replyTableView.separatorStyle = .none
+        replyTableView.allowsSelection = false
         return replyTableView
     }()
-    
-    // MARK:- Initialization
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        self.addSubview(replyTableView)
-        self.setReplyTableViewConstratins()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     // MARK:- Setting Methods
     // MARK: setViewConstraints
@@ -40,5 +29,16 @@ class ReplyView: UIView {
             replyTableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             replyTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
             ])
+    }
+    
+    // MARK:- Initialization
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(replyTableView)
+        self.setReplyTableViewConstratins()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

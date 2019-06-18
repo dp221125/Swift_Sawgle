@@ -65,6 +65,7 @@ class SettingViewController: UIViewController {
 }
 
 extension SettingViewController: UITableViewDataSource {
+    
     func numberOfSections(in _: UITableView) -> Int {
         return 4
     }
