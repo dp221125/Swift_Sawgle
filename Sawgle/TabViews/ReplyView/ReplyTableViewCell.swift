@@ -138,7 +138,7 @@ class ReplyTextHeaderView: UIView {
         self.heartCountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.heartCountLabel.centerXAnchor.constraint(equalTo: self.heartImageView.centerXAnchor),
-            self.heartCountLabel.topAnchor.constraint(equalTo: self.heartImageView.bottomAnchor, constant: 0.3),
+            self.heartCountLabel.topAnchor.constraint(equalTo: self.heartImageView.bottomAnchor, constant: -15),
             self.heartCountLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5)
             ])
     }

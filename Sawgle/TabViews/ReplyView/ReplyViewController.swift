@@ -57,7 +57,7 @@ class ReplyViewController: UIViewController {
         let starBarButtonItemStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         starBarButtonItemStackView.alignment = .center
         starBarButtonItemStackView.axis = .vertical
-        starBarButtonItemStackView.spacing = 1
+        starBarButtonItemStackView.spacing = -5
         return starBarButtonItemStackView
     }()
     
@@ -135,14 +135,17 @@ class ReplyViewController: UIViewController {
     func setConstraints() {
         self.starButtonImageView.translatesAutoresizingMaskIntoConstraints = false
         self.starCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            starButtonImageView.heightAnchor.constraint(equalTo: self.starCountLabel.heightAnchor, multiplier: 0.63)
-            ])
-        
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.starBarButtonItemStackView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
-            self.titleImageView.heightAnchor.constraint(equalTo: self.titleLabel.heightAnchor, multiplier: 0.63)
+            starButtonImageView.heightAnchor.constraint(equalTo: starCountLabel.heightAnchor, multiplier: 0.63),
+            starButtonImageView.topAnchor.constraint(equalTo: starBarButtonItemStackView.topAnchor, constant: 5)
+            ])
+        
+        NSLayoutConstraint.activate([
+            titleImageView.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 0.63)
             
             ])
     }
