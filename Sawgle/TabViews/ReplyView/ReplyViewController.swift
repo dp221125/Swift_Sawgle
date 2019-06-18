@@ -42,6 +42,10 @@ class ReplyViewController: UIViewController {
         return UITapGestureRecognizer(target: self, action: #selector(replyTableViewPressed(_:)))
     }()
     
+    lazy var replyViewPostButtonTapGestureRecognizer: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(replyPostButtonPressed(_:)))
+    }()
+    
     // MARK: navigationItemTitle UI
     let navigationItemTitleStackView: UIStackView = {
         let navigationItemTitleStackView = UIStackView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -187,6 +191,10 @@ class ReplyViewController: UIViewController {
         print("tableViewPressed")
         self.view.endEditing(true)
     }
+    
+    @objc func replyPostButtonPressed(_ sender: UITapGestureRecognizer) {
+        print("replyPostButtonPressed")
+    }
 }
 
 extension ReplyViewController: UITableViewDataSource {
@@ -196,9 +204,11 @@ extension ReplyViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 { return 1 }
-        else if section == 1 { return 10 }
-        else { return 0 }
+        guard let replyViewSection = ReplyTableViewSections(rawValue: section) else { return 0 }
+        switch replyViewSection {
+        case .textTableViewSection: return 1
+        case .postTableViewSection: return 10 // 추후에는 댓글갯수만큼만 반환
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -230,9 +240,9 @@ extension ReplyViewController: UITableViewDelegate {
         case .postTableViewSection:
             let replyPostHeaderView = ReplyPostHeaderView()
             replyPostHeaderView.backgroundColor = UIColor(named: "Pale")
+            replyPostHeaderView.postHeaderButton.addGestureRecognizer(replyViewPostButtonTapGestureRecognizer)
             return replyPostHeaderView
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
