@@ -106,7 +106,6 @@ class ReplyViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
         setKeyboardEvent()
         setReplyTableView()
         registerTableViewCell()
@@ -114,6 +113,11 @@ class ReplyViewController: UIViewController {
         setNavigationItemTitleStackView(titleName: "웃긴대학원")
         setStarBarButtonItem(count: 10)
         setConstraints()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        removeKeyboardEvent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,6 +128,11 @@ class ReplyViewController: UIViewController {
     func setKeyboardEvent() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardEvent() {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
     }
     
     func postReplyContents() {
@@ -241,7 +250,7 @@ class ReplyViewController: UIViewController {
     @objc func keyboardWillAppear(_ sender: NotificationCenter) {
         self.view.frame.origin.y -= 150
     }
-
+    
     @objc func keyboardWillDisappear(_ sender: NotificationCenter) {
         self.view.frame.origin.y += 150
     }
