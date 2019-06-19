@@ -23,6 +23,7 @@ class ReplyViewController: UIViewController {
     // MARK:- Properties
     let replyTextTableViewCellIdentifier = "replyTextTableViewCell"
     let replyPostTableViewCellIdentifier = "replyPostTableViewCell"
+    var isKeyboard = false
     var replyViewPostData: [ReplyData] = []
     
     lazy var replyView: ReplyView = {
@@ -248,11 +249,17 @@ class ReplyViewController: UIViewController {
     
     // MARK: Keyboard delegate Methods
     @objc func keyboardWillAppear(_ sender: NotificationCenter) {
-        self.view.frame.origin.y -= 150
+        if isKeyboard == false {
+            isKeyboard = true
+            self.view.frame.origin.y -= 150
+        }
     }
     
     @objc func keyboardWillDisappear(_ sender: NotificationCenter) {
-        self.view.frame.origin.y += 150
+        if isKeyboard == true {
+            isKeyboard = false
+            self.view.frame.origin.y += 150
+        }
     }
 }
 
@@ -279,7 +286,7 @@ extension ReplyViewController: UITableViewDataSource {
         else {
             guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
             replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
-            replyPostTableViewCell.setPostTableViewCellData(replyData: replyViewPostData[indexPath.row])
+            replyPostTableViewCell.setPostTableViewCellData(replyData: replyViewPostData.reversed()[indexPath.row])
             return replyPostTableViewCell
         }
     }
