@@ -106,6 +106,8 @@ class ReplyViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        setKeyboardEvent()
         setReplyTableView()
         registerTableViewCell()
         setBackBarButtonItem()
@@ -119,6 +121,11 @@ class ReplyViewController: UIViewController {
     }
     
     // MARK:- setting Methods
+    func setKeyboardEvent() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     func postReplyContents() {
         if self.replyPostHeaderView.postHeaderTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty == false {
             // 이 시점의 닉네임, 시간값, 포스팅내용, 하트수치를 저장하여 서버에 POST처리 후, 테이블뷰셀에 기록한다.
@@ -203,12 +210,12 @@ class ReplyViewController: UIViewController {
     }
     
     // MARK:- TouchEvents Methods
+    // MARK: tapGestureRecognizer Event Methods
     @objc func backButtonPressed(_ sender: UIButton) {
         print("backButtonItemPressed")
         self.dismissDetail()
     }
     
-    // MARK: tapGestureRecognizer Event Methods
     @objc func starBarButtonImageViewPressed(_ sender: UITapGestureRecognizer) {
         print("starBarButtonItemPressed")
     }
@@ -228,6 +235,15 @@ class ReplyViewController: UIViewController {
             print("replyPostButtonPressed")
             replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)	}
+    }
+    
+    // MARK: Keyboard delegate Methods
+    @objc func keyboardWillAppear(_ sender: NotificationCenter) {
+        self.view.frame.origin.y -= 150
+    }
+
+    @objc func keyboardWillDisappear(_ sender: NotificationCenter) {
+        self.view.frame.origin.y += 150
     }
 }
 
