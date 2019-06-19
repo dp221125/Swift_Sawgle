@@ -19,8 +19,6 @@ class ReplyTextTableViewCell: UITableViewCell {
         replyTextView.textColor = UIColor(named: "greyishBrown")
         replyTextView.isEditable = false
         replyTextView.isScrollEnabled = false
-        //        replyTextView.clipsToBounds = true
-        //        replyTextView.autoresizesSubviews = false
         
         return replyTextView
     }()
@@ -98,12 +96,6 @@ class ReplyTextHeaderView: UIView {
     }()
     
     // MARK:- Setting Methods
-    func setSubViews() {
-        addSubview(titleLabel)
-        addSubview(dateLabel)
-        addSubview(bottomBorderView)
-        setHeartCountView(count: 10)
-    }
     
     func setConstraints() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -143,6 +135,13 @@ class ReplyTextHeaderView: UIView {
             ])
     }
     
+    func setSubViews() {
+        addSubview(titleLabel)
+        addSubview(dateLabel)
+        addSubview(bottomBorderView)
+        setHeartCountView(count: 10)
+    }
+    
     func setHeartCountView(count: Int){
         heartCountLabel.text = "\(count)"
         addSubview(heartImageView)
@@ -166,8 +165,118 @@ class ReplyTextHeaderView: UIView {
 /// MARK: 댓글 입력 및 댓글내용 셀
 class ReplyPostTableViewCell: UITableViewCell {
     
+    let heartImageView: UIImageView = {
+        let heartImageView = UIImageView(image: #imageLiteral(resourceName: "heart"))
+        heartImageView.contentMode = .scaleAspectFit
+        return heartImageView
+    }()
+    
+    let heartCountLabel: UILabel = {
+        let heartCountLabel = UILabel()
+        heartCountLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 10)
+        heartCountLabel.text = "0"
+        heartCountLabel.adjustsFontSizeToFitWidth = true
+        heartCountLabel.contentMode = .scaleAspectFit
+        return heartCountLabel
+    }()
+    
+    let replyPostDateLabel: UILabel = {
+        let replyPostDateLabel = UILabel()
+        replyPostDateLabel.text = "xxxx.xx.xx 오후 x.xx"
+        replyPostDateLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 10)
+        return replyPostDateLabel
+    }()
+    
+    let replyPostNickNameLabel: UILabel = {
+        let replyPostNickNameLabel = UILabel()
+        replyPostNickNameLabel.font = UIFont(name: "S-CoreDream-5Medium", size: 12)
+        replyPostNickNameLabel.text = "멍구"
+        return replyPostNickNameLabel
+    }()
+    
+    let replyPostTextLabel: UILabel = {
+        let replyPostTextLabel = UILabel()
+        replyPostTextLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 11)
+        replyPostTextLabel.text = "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+        return replyPostTextLabel
+    }()
+    
+    let bottomBorderView: UIView = {
+        let bottomBorderView = UIView()
+        bottomBorderView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return bottomBorderView
+    }()
+    
+    // MARK:- Setting Methods
+    // MARK: set Constraint
+    func setConstraint() {
+        self.replyPostDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            replyPostDateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            replyPostDateLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15.7),
+            replyPostDateLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.8),
+            ])
+        
+        self.bottomBorderView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomBorderView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            bottomBorderView.heightAnchor.constraint(equalToConstant: 1),
+            bottomBorderView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
+            bottomBorderView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            ])
+        
+        
+        self.replyPostNickNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            replyPostNickNameLabel.topAnchor.constraint(equalTo: replyPostDateLabel.bottomAnchor, constant: 6),
+            replyPostNickNameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15.7),
+            replyPostNickNameLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.1),
+            replyPostNickNameLabel.bottomAnchor.constraint(equalTo: bottomBorderView.bottomAnchor, constant: -9)
+            ])
+        
+        self.replyPostTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            replyPostTextLabel.leftAnchor.constraint(equalTo: replyPostNickNameLabel.rightAnchor, constant: 5),
+            replyPostTextLabel.rightAnchor.constraint(equalTo: replyPostDateLabel.rightAnchor),
+            replyPostTextLabel.centerYAnchor.constraint(equalTo: replyPostNickNameLabel.centerYAnchor),
+            replyPostTextLabel.heightAnchor.constraint(equalTo: replyPostNickNameLabel.heightAnchor)
+            ])
+        
+        self.heartImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            heartImageView.topAnchor.constraint(equalTo: replyPostDateLabel.topAnchor, constant: 0),
+            heartImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15.7),
+            heartImageView.heightAnchor.constraint(equalToConstant: 15)
+            ])
+        
+        self.heartCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            heartCountLabel.centerXAnchor.constraint(equalTo: heartImageView.centerXAnchor),
+            heartCountLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            
+            ])
+    }
+    
+    func setPostTableViewCellData(replyData: ReplyData) {
+        replyPostTextLabel.text = replyData.postText
+        replyPostNickNameLabel.text = replyData.nickName
+        heartCountLabel.text = "\(replyData.heartCount)"
+        replyPostDateLabel.text = replyData.postDate
+    }
+    
+    func addSubviews() {
+        addSubview(replyPostDateLabel)
+        addSubview(replyPostNickNameLabel)
+        addSubview(replyPostTextLabel)
+        addSubview(bottomBorderView)
+        addSubview(heartImageView)
+        addSubview(heartCountLabel)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addSubviews()
+        setConstraint()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -191,6 +300,9 @@ class ReplyPostHeaderView: UIView {
         let postHeaderTextField = UITextField()
         postHeaderTextField.placeholder = " Saw that Gle"
         postHeaderTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        postHeaderTextField.autocorrectionType = .no
+        postHeaderTextField.textContentType = .nickname
+        postHeaderTextField.spellCheckingType = .no
         return postHeaderTextField
     }()
     
@@ -211,6 +323,7 @@ class ReplyPostHeaderView: UIView {
         return bottomBorderView
     }()
     
+    // MARK:- Setting Methods
     func addSubview() {
         addSubview(postHeaderTitleLabel)
         addSubview(postHeaderTextField)
@@ -218,6 +331,7 @@ class ReplyPostHeaderView: UIView {
         addSubview(postHeaderBottomBorderView)
     }
     
+    // MARK: set Constraint
     func setConstraint() {
         self.postHeaderTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -249,6 +363,11 @@ class ReplyPostHeaderView: UIView {
             postHeaderBottomBorderView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
             postHeaderBottomBorderView.heightAnchor.constraint(equalToConstant: 1.0)
             ])
+    }
+    
+    func setTitleLabelCount(count: Int) {
+        if(count == 0) { self.postHeaderTitleLabel.text = "댓글없음" }
+        else { self.postHeaderTitleLabel.text = "\(count)" }
     }
     
     func setPostReplyCount(count: Int){

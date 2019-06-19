@@ -23,6 +23,7 @@ class ReplyViewController: UIViewController {
     // MARK:- Properties
     let replyTextTableViewCellIdentifier = "replyTextTableViewCell"
     let replyPostTableViewCellIdentifier = "replyPostTableViewCell"
+    var replyViewPostData: [ReplyData] = []
     
     lazy var replyView: ReplyView = {
         guard let replyView = view as? ReplyView else { return ReplyView() }
@@ -118,6 +119,29 @@ class ReplyViewController: UIViewController {
     }
     
     // MARK:- setting Methods
+    func postReplyContents() {
+        if self.replyPostHeaderView.postHeaderTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty == false {
+            // 이 시점의 닉네임, 시간값, 포스팅내용, 하트수치를 저장하여 서버에 POST처리 후, 테이블뷰셀에 기록한다.
+            // MARK: 서버 구현 전 테스트 용 코드
+            guard let textData = replyPostHeaderView.postHeaderTextField.text else { return }
+            
+            let replyData = ReplyData(text: textData)
+            self.replyViewPostData.append(replyData)
+            self.replyPostHeaderView.postHeaderTextField.text = ""
+            self.replyPostHeaderView.setPostReplyCount(count: self.replyViewPostData.count)
+            
+            DispatchQueue.main.async() {
+                self.replyView.replyTableView.reloadData()
+            }
+            
+        } else {
+            let replyPostAlertController = UIAlertController(title: "댓글 미입력", message: "댓글을 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            let replyPostAlertAction = UIAlertAction(title: "네 ㅠ.ㅠ", style: UIAlertAction.Style.default, handler: nil)
+            replyPostAlertController.addAction(replyPostAlertAction)
+            self.present(replyPostAlertController, animated: true, completion: nil)
+        }
+    }
+    
     func setBackBarButtonItem(){
         let backButton = UIButton(type: .custom)
         let originImage = #imageLiteral(resourceName: "Back")
@@ -200,10 +224,10 @@ class ReplyViewController: UIViewController {
     
     @objc func replyPostButtonPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .ended {
-            // POST 처리 부분
+            postReplyContents()
             print("replyPostButtonPressed")
             replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1) 	}
+        } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)	}
     }
 }
 
@@ -217,7 +241,7 @@ extension ReplyViewController: UITableViewDataSource {
         guard let replyViewSection = ReplyTableViewSections(rawValue: section) else { return 0 }
         switch replyViewSection {
         case .textTableViewSection: return 1
-        case .postTableViewSection: return 10 // 추후에는 댓글갯수만큼만 반환
+        case .postTableViewSection: return replyViewPostData.count // 추후에는 댓글갯수만큼만 반환
         }
     }
     
@@ -230,6 +254,7 @@ extension ReplyViewController: UITableViewDataSource {
         else {
             guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
             replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
+            replyPostTableViewCell.setPostTableViewCellData(replyData: replyViewPostData[indexPath.row])
             return replyPostTableViewCell
         }
     }
