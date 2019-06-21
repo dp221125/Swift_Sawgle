@@ -299,7 +299,7 @@ extension ReplyViewController: UITableViewDataSource {
             guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
             replyPostTableViewCell.setPostTableViewCellData(replyData: replyViewPostData.reversed()[indexPath.row])
             replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
-
+            
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cellHeartViewPressed(_:)))
             tapGestureRecognizer.numberOfTapsRequired = 1
             replyPostTableViewCell.heartView.isUserInteractionEnabled = true

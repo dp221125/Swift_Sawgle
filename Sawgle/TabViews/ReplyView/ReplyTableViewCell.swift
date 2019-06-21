@@ -72,7 +72,7 @@ class ReplyTextHeaderView: UIView {
     
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 18)
+        titleLabel.font = UIFont(name: "S-CoreDream-5Medium", size: 18)
         titleLabel.text = "올코드 가즈아-- OTL"
         return titleLabel
     }()
@@ -230,7 +230,7 @@ class ReplyPostTableViewCell: UITableViewCell {
         let heartView = CellHeartView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         return heartView
     }()
-
+    
     let replyPostDateLabel: UILabel = {
         let replyPostDateLabel = UILabel()
         replyPostDateLabel.text = "xxxx.xx.xx 오후 x.xx"
@@ -317,7 +317,6 @@ class ReplyPostTableViewCell: UITableViewCell {
             ])
     }
     
-    
     /// setting to postTableViewCellData
     ///
     /// - Parameter replyData: 서버 연동 후 재작업 필요
@@ -347,7 +346,6 @@ class ReplyPostTableViewCell: UITableViewCell {
     }
 }
 
-
 /// MARK:- 댓글섹션 헤더 뷰
 class ReplyPostHeaderView: UIView {
     
@@ -355,7 +353,7 @@ class ReplyPostHeaderView: UIView {
     let postHeaderTitleLabel: UILabel = {
         let postHeaderTitleLabel = UILabel()
         postHeaderTitleLabel.text = "댓글"
-        postHeaderTitleLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 18)
+        postHeaderTitleLabel.font = UIFont(name: "S-CoreDream-5Medium", size: 18)
         return postHeaderTitleLabel
     }()
     
