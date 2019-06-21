@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// MARK: 글 제목 및 텍스트 뷰 셀
+/// MARK:- 글 제목 및 텍스트 뷰 셀
 class ReplyTextTableViewCell: UITableViewCell {
     
     let replyTextView: UITextView = {
@@ -53,6 +53,7 @@ class ReplyTextTableViewCell: UITableViewCell {
     }
 }
 
+/// MARK:- 댓글테이블 뷰 최상단 섹션헤더뷰
 class ReplyTextHeaderView: UIView {
     
     // MARK:- Properties
@@ -96,7 +97,7 @@ class ReplyTextHeaderView: UIView {
     }()
     
     // MARK:- Setting Methods
-    
+    // MARK: setConstraints
     func setConstraints() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -162,8 +163,12 @@ class ReplyTextHeaderView: UIView {
     }
 }
 
-/// MARK: 댓글 입력 및 댓글내용 셀
-class ReplyPostTableViewCell: UITableViewCell {
+/// MARK:- 댓글 테이블뷰 댓글셀 내 하트뷰
+class CellHeartView: UIView {
+    
+    // MARK: properties
+    private var heartCount = 0
+    private var isHeartCounting = false
     
     let heartImageView: UIImageView = {
         let heartImageView = UIImageView(image: #imageLiteral(resourceName: "heart"))
@@ -180,6 +185,52 @@ class ReplyPostTableViewCell: UITableViewCell {
         return heartCountLabel
     }()
     
+    // MARK:- Setting Methods
+    func initHearCount() {
+        self.heartCount = 0
+        self.heartCountLabel.text = "\(heartCount)"
+    }
+    
+    func setHeartCount(count : Int) {
+        self.heartCountLabel.text = "\(count)"
+    }
+    
+    func changeHeartCount() {
+        if isHeartCounting == false {
+            self.heartCount += 1
+            self.heartCountLabel.text = "\(heartCount)"
+            isHeartCounting = true
+        } else {
+            self.heartCount -= 1
+            self.heartCountLabel.text = "\(heartCount)"
+            isHeartCounting = false
+        }
+    }
+    
+    func addCellHeartViewSubviews() {
+        addSubview(heartImageView)
+        addSubview(heartCountLabel)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initHearCount()
+        addCellHeartViewSubviews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+/// MARK:- 댓글 테이블뷰 댓글 셀
+class ReplyPostTableViewCell: UITableViewCell {
+    
+    let heartView: CellHeartView = {
+        let heartView = CellHeartView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        return heartView
+    }()
+
     let replyPostDateLabel: UILabel = {
         let replyPostDateLabel = UILabel()
         replyPostDateLabel.text = "xxxx.xx.xx 오후 x.xx"
@@ -242,26 +293,39 @@ class ReplyPostTableViewCell: UITableViewCell {
             replyPostTextLabel.heightAnchor.constraint(equalTo: replyPostNickNameLabel.heightAnchor)
             ])
         
-        self.heartImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.heartView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartImageView.topAnchor.constraint(equalTo: replyPostDateLabel.topAnchor, constant: 0),
-            heartImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15.7),
-            heartImageView.heightAnchor.constraint(equalToConstant: 15)
+            heartView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            heartView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15.7),
+            heartView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            heartView.leftAnchor.constraint(equalTo: replyPostDateLabel.rightAnchor)
             ])
         
-        self.heartCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.heartView.heartImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartCountLabel.centerXAnchor.constraint(equalTo: heartImageView.centerXAnchor),
-            heartCountLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            heartView.heartImageView.topAnchor.constraint(equalTo: heartView.topAnchor, constant: 0),
+            heartView.heartImageView.centerXAnchor.constraint(equalTo: heartView.centerXAnchor),
+            heartView.heartImageView.heightAnchor.constraint(equalToConstant: 15)
+            ])
+        
+        self.heartView.heartCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            heartView.heartCountLabel.centerXAnchor.constraint(equalTo: heartView.heartImageView.centerXAnchor),
+            heartView.heartCountLabel.topAnchor.constraint(equalTo: heartView.heartImageView.bottomAnchor, constant: 3),
+            heartView.heartCountLabel.bottomAnchor.constraint(equalTo: heartView.bottomAnchor, constant: 0)
             
             ])
     }
     
+    
+    /// setting to postTableViewCellData
+    ///
+    /// - Parameter replyData: 서버 연동 후 재작업 필요
     func setPostTableViewCellData(replyData: ReplyData) {
         replyPostTextLabel.text = replyData.postText
         replyPostNickNameLabel.text = replyData.nickName
-        heartCountLabel.text = "\(replyData.heartCount)"
         replyPostDateLabel.text = replyData.postDate
+        heartView.setHeartCount(count: replyData.heartCount)
     }
     
     func addSubviews() {
@@ -269,8 +333,7 @@ class ReplyPostTableViewCell: UITableViewCell {
         addSubview(replyPostNickNameLabel)
         addSubview(replyPostTextLabel)
         addSubview(bottomBorderView)
-        addSubview(heartImageView)
-        addSubview(heartCountLabel)
+        addSubview(heartView)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -387,6 +450,5 @@ class ReplyPostHeaderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }
 

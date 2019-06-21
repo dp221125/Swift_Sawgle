@@ -18,6 +18,7 @@ enum ReplyTableViewSections: Int {
     case postTableViewSection = 1
 }
 
+/// MARK:- 댓글 뷰컨트롤러
 class ReplyViewController: UIViewController {
     
     // MARK:- Properties
@@ -247,6 +248,17 @@ class ReplyViewController: UIViewController {
         } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)	}
     }
     
+    
+    /// MARK: cellHeartView Touch Event Method
+    ///
+    /// - Parameter sender: 댓글 테이블뷰셀 내 하트버튼 터치시 동작하는 CellHeartView 이벤트
+    @objc func cellHeartViewPressed(_ sender: UITapGestureRecognizer) {
+        guard let selectedCellHeartView = sender.view as? CellHeartView else { return }
+        // MARK: will POST cellHeartView touch Event
+        print("\(selectedCellHeartView.tag)번째 cellHeartView Pressed")
+        selectedCellHeartView.changeHeartCount()
+    }
+    
     // MARK: Keyboard delegate Methods
     @objc func keyboardWillAppear(_ sender: NotificationCenter) {
         if isKeyboard == false {
@@ -285,9 +297,16 @@ extension ReplyViewController: UITableViewDataSource {
         }
         else {
             guard let replyPostTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.replyPostTableViewCellIdentifier, for: indexPath) as? ReplyPostTableViewCell else { return UITableViewCell() }
-            replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
             replyPostTableViewCell.setPostTableViewCellData(replyData: replyViewPostData.reversed()[indexPath.row])
+            replyPostTableViewCell.backgroundColor = UIColor(named: "Pale")
+
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cellHeartViewPressed(_:)))
+            tapGestureRecognizer.numberOfTapsRequired = 1
+            replyPostTableViewCell.heartView.isUserInteractionEnabled = true
+            replyPostTableViewCell.heartView.tag = indexPath.row
+            replyPostTableViewCell.heartView.addGestureRecognizer(tapGestureRecognizer)
             return replyPostTableViewCell
+            
         }
     }
 }
