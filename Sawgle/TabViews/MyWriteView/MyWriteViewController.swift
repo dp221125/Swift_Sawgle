@@ -48,12 +48,7 @@ class MyWriteViewController: UIViewController {
 /// MARK;- UICollectionViewDelegate
 extension MyWriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let replyViewController = ReplyViewController()
-        let nvController = UINavigationController(rootViewController: replyViewController)
-        self.presentDetail(nvController)
-        
-        // 여기서 뷰를 이동시킨다.
+
     }
     
     

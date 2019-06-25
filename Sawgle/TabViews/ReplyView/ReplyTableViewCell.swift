@@ -44,7 +44,7 @@ class ReplyTextTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubViews()
-        setReplyTextView(text: "안녕하세요 \n안녕하세요입니다. \n가나다라마바사아자차카타파하 \n 으에으에으어허 \n 안녕하세요 \n안녕하세요입니다. \n가나다라마바사아자차카타파하 \n 으에으에으어허안녕하세요 \n안녕하세요입니다. \n가나다라마바사아자차카타파하 \n 으에으에으어허 \n 안녕하세요 \n안녕하세요입니다. \n가나다라마바사아자차카타파하 \n 으에으에으어허")
+        setReplyTextView(text: " ") // 댓글 내용 셋팅
         setConstraint()
     }
     
@@ -73,7 +73,7 @@ class ReplyTextHeaderView: UIView {
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "S-CoreDream-5Medium", size: 18)
-        titleLabel.text = "올코드 가즈아-- OTL"
+        titleLabel.text = " " // 페이지 제목 내용
         return titleLabel
     }()
     
@@ -233,7 +233,7 @@ class ReplyPostTableViewCell: UITableViewCell {
     
     let replyPostDateLabel: UILabel = {
         let replyPostDateLabel = UILabel()
-        replyPostDateLabel.text = "xxxx.xx.xx 오후 x.xx"
+        replyPostDateLabel.text = " " // 댓글 타임스탬프
         replyPostDateLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 10)
         return replyPostDateLabel
     }()
@@ -241,14 +241,14 @@ class ReplyPostTableViewCell: UITableViewCell {
     let replyPostNickNameLabel: UILabel = {
         let replyPostNickNameLabel = UILabel()
         replyPostNickNameLabel.font = UIFont(name: "S-CoreDream-5Medium", size: 12)
-        replyPostNickNameLabel.text = "멍구"
+        replyPostNickNameLabel.text = " " // 댓글 닉네임
         return replyPostNickNameLabel
     }()
     
     let replyPostTextLabel: UILabel = {
         let replyPostTextLabel = UILabel()
         replyPostTextLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: 11)
-        replyPostTextLabel.text = "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+        replyPostTextLabel.text = " " // 댓글 내용
         return replyPostTextLabel
     }()
     
@@ -427,7 +427,7 @@ class ReplyPostHeaderView: UIView {
     }
     
     func setTitleLabelCount(count: Int) {
-        if(count == 0) { self.postHeaderTitleLabel.text = "댓글없음" }
+        if(count == 0) { self.postHeaderTitleLabel.text = "댓글 없음" }
         else { self.postHeaderTitleLabel.text = "\(count)" }
     }
     

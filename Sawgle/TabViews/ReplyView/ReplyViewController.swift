@@ -123,7 +123,6 @@ class ReplyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("ReplyView")
     }
     
     // MARK:- setting Methods
@@ -223,27 +222,25 @@ class ReplyViewController: UIViewController {
     // MARK:- TouchEvents Methods
     // MARK: tapGestureRecognizer Event Methods
     @objc func backButtonPressed(_ sender: UIButton) {
-        print("backButtonItemPressed")
         self.dismissDetail()
     }
     
     @objc func starBarButtonImageViewPressed(_ sender: UITapGestureRecognizer) {
-        print("starBarButtonItemPressed")
+
     }
     
     @objc func heartImageViewPressed(_ sender: UITapGestureRecognizer) {
-        print("hearImageViewPressed")
+
     }
     
     @objc func replyTableViewPressed(_ sender: UITapGestureRecognizer) {
-        print("tableViewPressed")
         self.view.endEditing(true)
     }
     
     @objc func replyPostButtonPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .ended {
             postReplyContents()
-            print("replyPostButtonPressed")
+
             replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)	}
     }
@@ -255,7 +252,7 @@ class ReplyViewController: UIViewController {
     @objc func cellHeartViewPressed(_ sender: UITapGestureRecognizer) {
         guard let selectedCellHeartView = sender.view as? CellHeartView else { return }
         // MARK: will POST cellHeartView touch Event
-        print("\(selectedCellHeartView.tag)번째 cellHeartView Pressed")
+
         selectedCellHeartView.changeHeartCount()
     }
     
