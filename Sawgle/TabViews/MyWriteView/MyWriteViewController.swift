@@ -48,9 +48,6 @@ class MyWriteViewController: UIViewController {
 /// MARK;- UICollectionViewDelegate
 extension MyWriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ReplyViewController()
-        let nv = UINavigationController(rootViewController: vc)
-        self.presentCustomTransition(nv)
     }
 }
 
