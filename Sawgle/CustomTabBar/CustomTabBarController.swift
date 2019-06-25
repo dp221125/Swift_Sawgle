@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTabBar: UIViewController {
+class CustomTabBarController: UIViewController {
     var homeVC: HomeViewController?
     var boomarkVC: BookMarkViewController?
     var mywriteVC: MyWriteViewController?
@@ -70,7 +70,7 @@ class CustomTabBar: UIViewController {
         addChild(newNavigation)
         targetView.contentView.addSubview(newNavigation.view)
 
-        self.vcList[index].didMove(toParent: self)
+        newNavigation.didMove(toParent: self)
     }
 
     @objc func moveWriteView() {

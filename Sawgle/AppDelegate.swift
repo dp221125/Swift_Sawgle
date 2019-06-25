@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 //        let startViewController = FirstViewController()
 //        window?.rootViewController = startViewController
-        let tabBarVC = CustomTabBar()
+        let tabBarVC = CustomTabBarController()
         window?.rootViewController = tabBarVC
         self.window?.makeKeyAndVisible()
         return true
