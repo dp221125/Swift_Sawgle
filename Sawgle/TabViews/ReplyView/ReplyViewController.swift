@@ -112,7 +112,7 @@ class ReplyViewController: UIViewController {
         setReplyTableView()
         registerTableViewCell()
         setBackBarButtonItem()
-        setNavigationItemTitleStackView(titleName: "웃긴대학원")
+        setNavigationItemTitleStackView(titleName: " ") // 네비게이션바 타이틀
         setStarBarButtonItem(count: 10)
         setConstraints()
     }
@@ -120,9 +120,6 @@ class ReplyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         removeKeyboardEvent()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
     }
     
     // MARK:- setting Methods
@@ -153,7 +150,7 @@ class ReplyViewController: UIViewController {
             
         } else {
             let replyPostAlertController = UIAlertController(title: "댓글 미입력", message: "댓글을 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-            let replyPostAlertAction = UIAlertAction(title: "네 ㅠ.ㅠ", style: UIAlertAction.Style.default, handler: nil)
+            let replyPostAlertAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
             replyPostAlertController.addAction(replyPostAlertAction)
             self.present(replyPostAlertController, animated: true, completion: nil)
         }
@@ -219,18 +216,24 @@ class ReplyViewController: UIViewController {
             ])
     }
     
+    // MARK:- Getting Methods
+    func getKeyboardHeight(_ sender: Notification) -> CGFloat {
+        guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return CGFloat.leastNormalMagnitude }
+        return keyboardFrame.cgRectValue.height
+    }
+    
     // MARK:- TouchEvents Methods
     // MARK: tapGestureRecognizer Event Methods
     @objc func backButtonPressed(_ sender: UIButton) {
-        self.dismissDetail()
+        self.dismissCustomTransition()
     }
     
     @objc func starBarButtonImageViewPressed(_ sender: UITapGestureRecognizer) {
-
+        
     }
     
     @objc func heartImageViewPressed(_ sender: UITapGestureRecognizer) {
-
+        
     }
     
     @objc func replyTableViewPressed(_ sender: UITapGestureRecognizer) {
@@ -240,9 +243,9 @@ class ReplyViewController: UIViewController {
     @objc func replyPostButtonPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .ended {
             postReplyContents()
-
+            
             replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)	}
+        } else { replyPostHeaderView.postHeaderButton.backgroundColor =  #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)    }
     }
     
     
@@ -252,22 +255,26 @@ class ReplyViewController: UIViewController {
     @objc func cellHeartViewPressed(_ sender: UITapGestureRecognizer) {
         guard let selectedCellHeartView = sender.view as? CellHeartView else { return }
         // MARK: will POST cellHeartView touch Event
-
+        
         selectedCellHeartView.changeHeartCount()
     }
     
     // MARK: Keyboard delegate Methods
-    @objc func keyboardWillAppear(_ sender: NotificationCenter) {
+    @objc func keyboardWillAppear(_ sender: Notification) {
+        let keyboardHeight = getKeyboardHeight(sender)
+        
         if isKeyboard == false {
             isKeyboard = true
-            self.view.frame.origin.y -= 150
+            self.view.frame.origin.y -= keyboardHeight
         }
     }
     
-    @objc func keyboardWillDisappear(_ sender: NotificationCenter) {
+    @objc func keyboardWillDisappear(_ sender: Notification) {
+        let keyboardHeight = getKeyboardHeight(sender)
+        
         if isKeyboard == true {
             isKeyboard = false
-            self.view.frame.origin.y += 150
+            self.view.frame.origin.y += keyboardHeight
         }
     }
 }

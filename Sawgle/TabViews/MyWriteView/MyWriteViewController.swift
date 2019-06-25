@@ -13,14 +13,14 @@ class MyWriteViewController: UIViewController {
         guard let ownView = view as? MyWriteView else {
             return MyWriteView()
         }
-
+        
         return ownView
     }()
-
+    
     override func loadView() {
         view = MyWriteView()
     }
-
+    
     override func viewDidLoad() {
         navigationItem.title = "mygle"
         
@@ -28,16 +28,16 @@ class MyWriteViewController: UIViewController {
         self.ownView.mySubscribePostView.delegate = self
         self.ownView.mySubscribePostView.dataSource = self
     }
-
+    
     override func viewDidLayoutSubviews() {
         let halfViewWidth = self.ownView.bounds.width / 2 - self.ownView.nameImageView.bounds.width
-
+        
         if self.ownView.nameLabel.bounds.width > halfViewWidth {
             self.ownView.nameLabel.widthAnchor.constraint(equalToConstant: halfViewWidth).isActive = true
             self.ownView.nameLabel.adjustsFontSizeToFitWidth = true
         }
     }
-
+    
     override func viewDidAppear(_: Bool) {
         self.ownView.myWriteSectionView.countLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: self.ownView.myWriteSectionView.countLabel.bounds.height)
         self.ownView.myCommentSectionView.countLabel.font = UIFont(name: "S-CoreDream-2ExtraLight", size: self.ownView.myCommentSectionView.countLabel.bounds.height)
@@ -48,23 +48,22 @@ class MyWriteViewController: UIViewController {
 /// MARK;- UICollectionViewDelegate
 extension MyWriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        let vc = ReplyViewController()
+        let nv = UINavigationController(rootViewController: vc)
+        self.presentCustomTransition(nv)
     }
-    
-    
-    
 }
 
 extension MyWriteViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return 10
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mySubscribePostCell", for: indexPath) as? mySubscribePostCell else {
             return UICollectionViewCell()
         }
-
+        
         return cell
     }
 }
@@ -73,16 +72,16 @@ extension MyWriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
         let width = view.bounds.width * 0.43
         let height = collectionView.bounds.height
-
+        
         return CGSize(width: width, height: height)
     }
 }
 
-// MARK: - UIViewController Extansion
+// MARK: - UIViewController Extension
 // MARK: viewController push/pop 화면전환 함수구현
 extension UIViewController {
     
-    func presentDetail(_ viewControllerToPresent: UIViewController) {
+    func presentCustomTransition(_ viewControllerToPresent: UIViewController) {
         guard let caLayer: CALayer = self.view.window?.layer else { return }
         let transition = CATransition()
         transition.type = CATransitionType.push
@@ -92,7 +91,7 @@ extension UIViewController {
         present(viewControllerToPresent, animated: false)
     }
     
-    func dismissDetail() {
+    func dismissCustomTransition() {
         guard let caLayer: CALayer = self.view.window?.layer else { return }
         let transition = CATransition()
         transition.type = CATransitionType.push
