@@ -79,21 +79,21 @@ extension MyWriteViewController: UICollectionViewDelegateFlowLayout {
 extension UIViewController {
     
     func presentCustomTransition(_ viewControllerToPresent: UIViewController) {
-        guard let caLayer: CALayer = self.view.window?.layer else { return }
-        let transition = CATransition()
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        caLayer.add(transition, forKey: kCATransition)
+        guard let windowLayer: CALayer = self.view.window?.layer else { return }
+        let customTransition = CATransition()
+        customTransition.type = CATransitionType.push
+        customTransition.subtype = CATransitionSubtype.fromRight
+        windowLayer.add(customTransition, forKey: kCATransition)
         
         present(viewControllerToPresent, animated: false)
     }
     
     func dismissCustomTransition() {
-        guard let caLayer: CALayer = self.view.window?.layer else { return }
-        let transition = CATransition()
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        caLayer.add(transition, forKey: kCATransition)
+        guard let windowLayer: CALayer = self.view.window?.layer else { return }
+        let customTransition = CATransition()
+        customTransition.type = CATransitionType.push
+        customTransition.subtype = CATransitionSubtype.fromLeft
+        windowLayer.add(customTransition, forKey: kCATransition)
         
         dismiss(animated: false)
     }
