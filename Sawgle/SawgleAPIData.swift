@@ -8,11 +8,6 @@
 
 import UIKit
 
-// MARK:- GET REQUEST
-//struct ReplyDataRequest: Codable {
-//    let replyData: [ReplyData]
-//}
-
 struct ReplyData {
     var nickName: String
     var postText: String
@@ -25,14 +20,10 @@ struct ReplyData {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd a h:mm"
         postDate = dateFormatter.string(from: nowDate)
-        nickName = "멍구"
+        nickName = " " // 닉네임
         postText = text
         heartCount = 0
     }
-    
-//    enum CodingKeys: String, CodingKey {
-//        case nickName, postText, postDate, heartCount
-//    }
 }
 
 // MARK:- POST REQUEST
