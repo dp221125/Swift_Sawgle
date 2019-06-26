@@ -30,6 +30,8 @@ class MyWriteSectionView: UIView {
         return enterImageView
     }()
     
+    
+    
     func makeSectionTitleLabelConstraint() {
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

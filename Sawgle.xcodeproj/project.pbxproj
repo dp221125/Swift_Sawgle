@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1E2CC67C22927C6F006E0B6E /* NewRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2CC67B22927C6F006E0B6E /* NewRegisterViewController.swift */; };
+		386CD00E22B64C7800D69166 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386CD00D22B64C7800D69166 /* ReplyViewController.swift */; };
+		386CD01122B7834700D69166 /* ReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386CD01022B7834700D69166 /* ReplyView.swift */; };
+		386CD01322B7872F00D69166 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386CD01222B7872F00D69166 /* ReplyTableViewCell.swift */; };
+		389F08F822BA26BC00EA5AD6 /* SawgleAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F08F722BA26BC00EA5AD6 /* SawgleAPIData.swift */; };
 		B406BA5122B3266A009B921D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B406BA5022B3266A009B921D /* SettingView.swift */; };
 		B406BA5922B354AD009B921D /* SettingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B406BA5822B354AD009B921D /* SettingTableCell.swift */; };
 		B4189F8F22929AF100B10E46 /* BirthDayVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		1E2CC67B22927C6F006E0B6E /* NewRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRegisterViewController.swift; sourceTree = "<group>"; };
+		386CD00D22B64C7800D69166 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		386CD01022B7834700D69166 /* ReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyView.swift; sourceTree = "<group>"; };
+		386CD01222B7872F00D69166 /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
+		389F08F722BA26BC00EA5AD6 /* SawgleAPIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SawgleAPIData.swift; sourceTree = "<group>"; };
 		B406BA5022B3266A009B921D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B406BA5822B354AD009B921D /* SettingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableCell.swift; sourceTree = "<group>"; };
 		B4189F8E22929AF100B10E46 /* BirthDayVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayVIewController.swift; sourceTree = "<group>"; };
@@ -81,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		386CD00F22B7833800D69166 /* ReplyView */ = {
+			isa = PBXGroup;
+			children = (
+				386CD00D22B64C7800D69166 /* ReplyViewController.swift */,
+				386CD01022B7834700D69166 /* ReplyView.swift */,
+				386CD01222B7872F00D69166 /* ReplyTableViewCell.swift */,
+			);
+			path = ReplyView;
+			sourceTree = "<group>";
+		};
 		B406BA4F22B32655009B921D /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +137,7 @@
 				B4AF0AF9229BCBD2008EEED7 /* WriteView */,
 				B4AF0AEF229B810A008EEED7 /* HomeViewController.swift */,
 				B4AF0AF1229BA35C008EEED7 /* BookMarkViewController.swift */,
+				386CD00F22B7833800D69166 /* ReplyView */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -157,6 +176,7 @@
 				B4ED24F1229784D70000598F /* LoginView */,
 				B4AF0AE9229B7DE2008EEED7 /* CustomTabBar */,
 				B4AF0AEE229B80F8008EEED7 /* TabViews */,
+				389F08F722BA26BC00EA5AD6 /* SawgleAPIData.swift */,
 				B4BDA9B3227A759E0064B561 /* Main.storyboard */,
 				B4BDA9B8227A759F0064B561 /* LaunchScreen.storyboard */,
 				B4BDA9AF227A759E0064B561 /* AppDelegate.swift */,
@@ -274,12 +294,15 @@
 			files = (
 				B4AF0AEB229B7DFC008EEED7 /* CustomTabBarView.swift in Sources */,
 				B406BA5122B3266A009B921D /* SettingView.swift in Sources */,
+				386CD01322B7872F00D69166 /* ReplyTableViewCell.swift in Sources */,
 				B406BA5922B354AD009B921D /* SettingTableCell.swift in Sources */,
 				B42BF59D227AAAC300D91F09 /* LoginView.swift in Sources */,
 				1E2CC67C22927C6F006E0B6E /* NewRegisterViewController.swift in Sources */,
 				B4AF0AF8229BA3D6008EEED7 /* WriteView.swift in Sources */,
 				B4BDA9CC227A87D80064B561 /* FontList.swift in Sources */,
+				386CD01122B7834700D69166 /* ReplyView.swift in Sources */,
 				B4AF0AF2229BA35C008EEED7 /* BookMarkViewController.swift in Sources */,
+				389F08F822BA26BC00EA5AD6 /* SawgleAPIData.swift in Sources */,
 				B4AF0AF6229BA3B4008EEED7 /* SettingViewController.swift in Sources */,
 				B4BDA9B2227A759E0064B561 /* FirstView.swift in Sources */,
 				B4ED24F3229784F90000598F /* LoginViewController.swift in Sources */,
@@ -293,6 +316,7 @@
 				B4AF0AFB229BCBE6008EEED7 /* WriteViewController.swift in Sources */,
 				B4CE603A22A4AC62009E889A /* MyWriteView.swift in Sources */,
 				B4ED24F02297839A0000598F /* FirstViewController.swift in Sources */,
+				386CD00E22B64C7800D69166 /* ReplyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5BY5MQ6875;
+				DEVELOPMENT_TEAM = NF9G85TZ2T;
 				INFOPLIST_FILE = Sawgle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,7 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5BY5MQ6875;
+				DEVELOPMENT_TEAM = NF9G85TZ2T;
 				INFOPLIST_FILE = Sawgle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
