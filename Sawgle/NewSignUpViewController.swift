@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRegisterViewController: UIViewController {
+class NewSignUpViewController: UIViewController {
     @IBOutlet var idCheckCircle: UIImageView!
     @IBOutlet var passwordCheckCircle: UIImageView!
     @IBOutlet var passwordMatchCheckCIrcle: UIImageView!
@@ -93,7 +93,7 @@ class NewRegisterViewController: UIViewController {
     }
 }
 
-extension NewRegisterViewController: UITextFieldDelegate {
+extension NewSignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
 

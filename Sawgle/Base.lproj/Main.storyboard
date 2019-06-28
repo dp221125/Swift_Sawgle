@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="29R-gz-cCI">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,10 +22,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--NewRegisterVC-->
+        <!--newSignUpVC-->
         <scene sceneID="tBM-RK-Tdj">
             <objects>
-                <viewController storyboardIdentifier="NewRegisterVC" title="NewRegisterVC" id="29R-gz-cCI" customClass="NewRegisterViewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newSignUpVC" title="newSignUpVC" id="29R-gz-cCI" customClass="NewSignUpViewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IB8-mw-a9P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

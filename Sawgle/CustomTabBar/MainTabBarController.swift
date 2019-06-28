@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CustomTabBarController: UIViewController {
+class MainTabBarController: UIViewController {
     var homeVC: HomeViewController?
     var boomarkVC: BookMarkViewController?
     var mywriteVC: MyWriteViewController?
     var settingVC: SettingViewController?
-    var navigation: UINavigationController?
+    var mainNavigationController: UINavigationController?
     var vcList = [UIViewController]()
-    var prevIndex: Int?
+    var previousIndex: Int?
 
     lazy var ownView: CustomTabBarView = {
         guard let convertView = view as? CustomTabBarView else {
@@ -26,28 +26,28 @@ class CustomTabBarController: UIViewController {
     }()
 
     @objc func linkAction(_ sender: UIButton) {
-        if self.prevIndex != sender.tag {
-            if self.prevIndex != nil {
-                let prevButton = self.ownView.viewWithTag(self.prevIndex!) as? UIButton
-                prevButton?.isSelected = false
+        if self.previousIndex != sender.tag {
+            if self.previousIndex != nil {
+                let previousButton = self.ownView.viewWithTag(self.previousIndex!) as? UIButton
+                previousButton?.isSelected = false
             }
             sender.isSelected = true
-            self.checkView()
-            self.prevIndex = sender.tag
+            self.checkPreviousView()
+            self.previousIndex = sender.tag
             self.moveView(sender.tag - 1)
         }
     }
 
     /// 새로운 뷰를 만들기 전에 기본의 뷰가 있으면 그 뷰를 제거한다.
-    func checkView() {
-        guard let prevSelectedIndex = prevIndex else {
+    func checkPreviousView() {
+        guard let prevSelectedIndex = previousIndex else {
             return
         }
 
         let prevViewArrayNumber = prevSelectedIndex - 1
-        self.navigation?.willMove(toParent: nil)
-        self.navigation?.view.removeFromSuperview()
-        self.navigation?.removeFromParent()
+        self.mainNavigationController?.willMove(toParent: nil)
+        self.mainNavigationController?.view.removeFromSuperview()
+        self.mainNavigationController?.removeFromParent()
 
         self.vcList[prevViewArrayNumber].willMove(toParent: nil)
         self.vcList[prevViewArrayNumber].view.removeFromSuperview()
@@ -59,21 +59,21 @@ class CustomTabBarController: UIViewController {
         guard let targetView = view as? CustomTabBarView else {
             return
         }
+        
+        let newNavigationController = UINavigationController(rootViewController: vcList[index])
+        newNavigationController.navigationBar.barTintColor = UIColor(named: "Pale")
+        newNavigationController.navigationBar.shadowImage = UIImage()
+        newNavigationController.navigationBar.titleTextAttributes = [.font: UIFont().mainFont(displaySize: 24), .foregroundColor: UIColor.white]
 
-        let newNavigation = UINavigationController(rootViewController: vcList[index])
-        newNavigation.navigationBar.barTintColor = UIColor(named: "Pale")
-        newNavigation.navigationBar.shadowImage = UIImage()
-        newNavigation.navigationBar.titleTextAttributes = [.font: UIFont().mainFont(displaySize: 24), .foregroundColor: UIColor.white]
+        self.mainNavigationController = newNavigationController
+        newNavigationController.view.frame = targetView.contentView.bounds
+        addChild(newNavigationController)
+        targetView.contentView.addSubview(newNavigationController.view)
 
-        self.navigation = newNavigation
-        newNavigation.view.frame = targetView.contentView.bounds
-        addChild(newNavigation)
-        targetView.contentView.addSubview(newNavigation.view)
-
-        newNavigation.didMove(toParent: self)
+        newNavigationController.didMove(toParent: self)
     }
 
-    @objc func moveWriteView() {
+    @objc func presentWriteView() {
         let writeView = WriteViewController()
         present(writeView, animated: true)
     }
@@ -101,17 +101,17 @@ class CustomTabBarController: UIViewController {
             fourButton.button.tag = 4
         }
 
-        targetView.centerButton.addTarget(self, action: #selector(self.moveWriteView), for: .touchUpInside)
+        targetView.centerButton.addTarget(self, action: #selector(self.presentWriteView), for: .touchUpInside)
     }
 
-    func makeViewList() {
-        guard let views = [homeVC, boomarkVC, mywriteVC, settingVC] as? [UIViewController] else {
+    func makeVCList() {
+        guard let viewControllers = [homeVC, boomarkVC, mywriteVC, settingVC] as? [UIViewController] else {
             return
         }
 
-        self.vcList = views
+        self.vcList = viewControllers
     }
-
+    
     override func loadView() {
         view = CustomTabBarView()
     }
@@ -122,13 +122,13 @@ class CustomTabBarController: UIViewController {
         self.mywriteVC = MyWriteViewController()
         self.settingVC = SettingViewController()
 
-        self.makeViewList()
+        self.makeVCList()
         self.linkTargetAction()
     }
 
     /// 뷰가 로딩이 다 되고 난 뒤 기본 뷰를 셋팅한다.
     override func viewDidAppear(_: Bool) {
-        if self.prevIndex == nil {
+        if self.previousIndex == nil {
             if let startButton = ownView.viewWithTag(1) as? UIButton {
                 self.linkAction(startButton)
             }

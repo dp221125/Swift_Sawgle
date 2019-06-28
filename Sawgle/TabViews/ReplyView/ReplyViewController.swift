@@ -114,13 +114,13 @@ class ReplyViewController: UIViewController {
 
     override func viewDidLoad() {
         navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        self.setKeyboardEvent()
-        self.setReplyTableView()
-        self.registerTableViewCell()
-        self.setBackBarButtonItem()
-        self.setNavigationItemTitleStackView(titleName: " ") // 네비게이션바 타이틀
-        self.setStarBarButtonItem(count: 10)
-        self.setConstraints()
+        setKeyboardEvent()
+        setReplyTableView()
+        signUpTableViewCell()
+        setBackBarButtonItem()
+        setNavigationItemTitleStackView(titleName: " ") // 네비게이션바 타이틀
+        setStarBarButtonItem(count: 10)
+        setConstraints()
     }
 
     override func viewWillDisappear(_: Bool) {
@@ -200,8 +200,8 @@ class ReplyViewController: UIViewController {
         let starBarButtonItem = UIBarButtonItem(customView: starBarButtonItemStackView)
         self.navigationItem.rightBarButtonItem = starBarButtonItem
     }
-
-    func registerTableViewCell() {
+    
+    func signUpTableViewCell() {
         self.replyView.replyTableView.register(ReplyTextTableViewCell.self, forCellReuseIdentifier: self.replyTextTableViewCellIdentifier)
         self.replyView.replyTableView.register(ReplyPostTableViewCell.self, forCellReuseIdentifier: self.replyPostTableViewCellIdentifier)
     }
