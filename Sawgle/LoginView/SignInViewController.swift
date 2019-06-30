@@ -15,7 +15,7 @@ class SignInViewController: UIViewController {
     }
 
     /// 백버튼에 액션을 연결한다.
-    func linkActionInSignInVC() {
+    func linkActionInSignInViewController() {
         guard let ownView = view as? SignInView else {
             return
         }
@@ -28,6 +28,6 @@ class SignInViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        self.linkActionInSignInVC()
+        self.linkActionInSignInViewController()
     }
 }

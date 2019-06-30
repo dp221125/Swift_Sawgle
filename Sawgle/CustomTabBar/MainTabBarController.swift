@@ -9,12 +9,12 @@
 import UIKit
 
 class MainTabBarController: UIViewController {
-    var homeVC: HomeViewController?
-    var boomarkVC: BookMarkViewController?
-    var mywriteVC: MyWriteViewController?
-    var settingVC: SettingViewController?
+    var homeViewController: HomeViewController?
+    var boomarkViewController: BookMarkViewController?
+    var myWriteViewController: MyWriteViewController?
+    var settingViewController: SettingViewController?
     var mainNavigationController: UINavigationController?
-    var vcList = [UIViewController]()
+    var viewControllerList = [UIViewController]()
     var previousIndex: Int?
 
     lazy var ownView: CustomTabBarView = {
@@ -49,9 +49,9 @@ class MainTabBarController: UIViewController {
         self.mainNavigationController?.view.removeFromSuperview()
         self.mainNavigationController?.removeFromParent()
 
-        self.vcList[prevViewArrayNumber].willMove(toParent: nil)
-        self.vcList[prevViewArrayNumber].view.removeFromSuperview()
-        self.vcList[prevViewArrayNumber].removeFromParent()
+        self.viewControllerList[prevViewArrayNumber].willMove(toParent: nil)
+        self.viewControllerList[prevViewArrayNumber].view.removeFromSuperview()
+        self.viewControllerList[prevViewArrayNumber].removeFromParent()
     }
 
     /// 새로운 뷰로 이동한다.
@@ -60,7 +60,7 @@ class MainTabBarController: UIViewController {
             return
         }
         
-        let newNavigationController = UINavigationController(rootViewController: vcList[index])
+        let newNavigationController = UINavigationController(rootViewController: viewControllerList[index])
         newNavigationController.navigationBar.barTintColor = UIColor(named: "Pale")
         newNavigationController.navigationBar.shadowImage = UIImage()
         newNavigationController.navigationBar.titleTextAttributes = [.font: UIFont().mainFont(displaySize: 24), .foregroundColor: UIColor.white]
@@ -104,12 +104,12 @@ class MainTabBarController: UIViewController {
         targetView.centerButton.addTarget(self, action: #selector(self.presentWriteView), for: .touchUpInside)
     }
 
-    func makeVCList() {
-        guard let viewControllers = [homeVC, boomarkVC, mywriteVC, settingVC] as? [UIViewController] else {
+    func makeViewControllerList() {
+        guard let viewControllers = [homeViewController, boomarkViewController, myWriteViewController, settingViewController] as? [UIViewController] else {
             return
         }
 
-        self.vcList = viewControllers
+        self.viewControllerList = viewControllers
     }
     
     override func loadView() {
@@ -117,12 +117,12 @@ class MainTabBarController: UIViewController {
     }
 
     override func viewDidLoad() {
-        self.homeVC = HomeViewController()
-        self.boomarkVC = BookMarkViewController()
-        self.mywriteVC = MyWriteViewController()
-        self.settingVC = SettingViewController()
+        self.homeViewController = HomeViewController()
+        self.boomarkViewController = BookMarkViewController()
+        self.myWriteViewController = MyWriteViewController()
+        self.settingViewController = SettingViewController()
 
-        self.makeVCList()
+        self.makeViewControllerList()
         self.linkTargetAction()
     }
 

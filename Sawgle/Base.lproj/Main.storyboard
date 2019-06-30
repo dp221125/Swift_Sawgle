@@ -22,10 +22,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--newSignUpVC-->
+        <!--newSignUpViewController-->
         <scene sceneID="tBM-RK-Tdj">
             <objects>
-                <viewController storyboardIdentifier="newSignUpVC" title="newSignUpVC" id="29R-gz-cCI" customClass="NewSignUpViewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newSignUpViewController" title="newSignUpViewController" id="29R-gz-cCI" customClass="NewSignUpViewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IB8-mw-a9P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="-716" y="-186"/>
         </scene>
-        <!--birthDayVC-->
+        <!--birthDayViewController-->
         <scene sceneID="ntl-gs-QC9">
             <objects>
-                <viewController storyboardIdentifier="birthDayVC" title="birthDayVC" id="yd4-yV-6gp" customClass="BirthDayVIewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="birthDayViewController" title="birthDayViewController" id="yd4-yV-6gp" customClass="BirthDayVIewController" customModule="Sawgle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WYe-X6-Kya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,7 +393,7 @@
                                             <color key="titleColor" name="brownishGray"/>
                                         </state>
                                         <connections>
-                                            <action selector="moveParentVC:" destination="yd4-yV-6gp" eventType="touchUpInside" id="ow0-FB-KMr"/>
+                                            <action selector="moveParentViewController:" destination="yd4-yV-6gp" eventType="touchUpInside" id="Afy-z8-2G9"/>
                                         </connections>
                                     </button>
                                 </subviews>
