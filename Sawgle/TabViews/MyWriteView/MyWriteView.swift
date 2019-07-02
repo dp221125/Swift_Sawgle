@@ -66,7 +66,7 @@ class MyWriteView: UIView {
         myLikePostSectionView.sectionTitleLabel.text = "좋아요 한 글"
         return myLikePostSectionView
     }()
-    
+
     let goBoardButton: UIButton = {
         let goBoardButton = UIButton()
         goBoardButton.setTitle("게시판에서 보기", for: .normal)
@@ -152,13 +152,13 @@ class MyWriteView: UIView {
             mySubscribePostView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
-    
+
     func goBoardButtonConstraint() {
         self.goBoardButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            goBoardButton.trailingAnchor.constraint(equalTo: myWriteSectionView.trailingAnchor,constant: -16),
-            goBoardButton.bottomAnchor.constraint(equalTo: myWriteSectionView.bottomAnchor,constant: -5),
-            ])
+            goBoardButton.trailingAnchor.constraint(equalTo: myWriteSectionView.trailingAnchor, constant: -16),
+            goBoardButton.bottomAnchor.constraint(equalTo: myWriteSectionView.bottomAnchor, constant: -5),
+        ])
     }
 
     func addViewItemInMyWriteView() {
@@ -190,7 +190,7 @@ class MyWriteView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1) 
+        backgroundColor = #colorLiteral(red: 0.9882352941, green: 0.9215686275, blue: 0.8235294118, alpha: 1)
         self.addViewItemInMyWriteView()
         self.addViewItemConstraint()
         self.addStackItem()

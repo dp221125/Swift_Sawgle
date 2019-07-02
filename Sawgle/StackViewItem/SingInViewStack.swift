@@ -9,20 +9,15 @@
 import UIKit
 
 class SingInViewStackItem: UIView {
-    
     let stackItem: UIStackView = {
-        return UIStackView()
+        UIStackView()
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
     }
-    
 }
-
-
-

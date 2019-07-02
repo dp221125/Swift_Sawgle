@@ -9,7 +9,6 @@
 import UIKit
 
 class MyWriteSectionView: UIView {
-    
     let sectionTitleLabel: UILabel = {
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.textColor = UIColor(named: "PaleBrown")
@@ -17,70 +16,68 @@ class MyWriteSectionView: UIView {
         sectionTitleLabel.baselineAdjustment = .alignCenters
         return sectionTitleLabel
     }()
-    
+
     let countLabel: UILabel = {
         let countLabel = UILabel()
         countLabel.textColor = UIColor(named: "PinkishGrey")
         return countLabel
     }()
-    
+
     let enterImageView: UIImageView = {
         let enterImageView = UIImageView()
         enterImageView.image = UIImage(named: "Entrance")
         return enterImageView
     }()
-    
-    
-    
+
     func makeSectionTitleLabelConstraint() {
-        sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            sectionTitleLabel.topAnchor.constraint(equalTo: topAnchor,constant: 16),
-            sectionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-            sectionTitleLabel.heightAnchor.constraint(equalToConstant: 15)
-            ])
+            sectionTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            sectionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            sectionTitleLabel.heightAnchor.constraint(equalToConstant: 15),
+        ])
     }
-    
+
     func makeCountLabelConstraint() {
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.countLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            countLabel.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor,constant: 16),
-            countLabel.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -16),
-            countLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-            countLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16),
-            
-            ])
+            countLabel.topAnchor.constraint(equalTo: sectionTitleLabel.bottomAnchor, constant: 16),
+            countLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            countLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+        ])
     }
-    
+
     func makeEnterImageViewConstraint() {
-        enterImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.enterImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             enterImageView.centerYAnchor.constraint(equalTo: sectionTitleLabel.centerYAnchor),
-            enterImageView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -5),
-            enterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.22)
-            ])
+            enterImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            enterImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.22),
+        ])
     }
-    
+
     func addViewItemInMyWriteSectionView() {
-        addSubview(sectionTitleLabel)
-        addSubview(countLabel)
-        addSubview(enterImageView)
+        addSubview(self.sectionTitleLabel)
+        addSubview(self.countLabel)
+        addSubview(self.enterImageView)
     }
-    
+
     func addViewItemConstraintInMyWriteSectionView() {
-        makeSectionTitleLabelConstraint()
-        makeCountLabelConstraint()
-        makeEnterImageViewConstraint()
+        self.makeSectionTitleLabelConstraint()
+        self.makeCountLabelConstraint()
+        self.makeEnterImageViewConstraint()
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         layer.cornerRadius = 15
-        addViewItemInMyWriteSectionView()
-        addViewItemConstraintInMyWriteSectionView()
+        self.addViewItemInMyWriteSectionView()
+        self.addViewItemConstraintInMyWriteSectionView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

@@ -9,8 +9,7 @@
 import UIKit
 
 extension UILabel {
-    
-    func makeTitleLabel(titleText: String,titleSize: CGFloat, titleColor: UIColor) -> UILabel {
+    func makeTitleLabel(titleText: String, titleSize: CGFloat, titleColor: UIColor) -> UILabel {
         self.font = UIFont().mainFont(displaySize: titleSize)
         self.text = titleText
         self.textColor = titleColor
