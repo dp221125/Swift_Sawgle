@@ -9,14 +9,13 @@
 import UIKit
 
 class StartingViewController: UIViewController {
-    
     // ownView는 전부 아래와 같이 셋팅한다.
     // 싱글턴 구현을 고려해봐야 한다? // Dispatch once?
     // 리펙토링은 디자인패턴구성
     // 네이밍 등.... 정리
     // set,get사용 미사용은 하기나름 물론 약속이 되었으면 그대로 가면 된다.
     lazy var ownView: StartingView = {
-        let convertView = StartingView() 
+        let convertView = StartingView()
         return convertView
     }()
 
@@ -26,7 +25,7 @@ class StartingViewController: UIViewController {
 //        }
 //        return convertView
 //    }()
-    
+
     /// 로그인 화면을 생성한다.
     @objc func presentSignInViewController() {
         let signInViewController = SignInViewController()
@@ -41,15 +40,15 @@ class StartingViewController: UIViewController {
 
         self.present(signInViewController, animated: true)
     }
-    
+
     /// 각각 버튼에 액션을 연결한다.
     func linkActionInStartingView() {
-        ownView.signInButton.addTarget(self, action: #selector(self.presentSignInViewController), for: .touchUpInside)
-        ownView.signUpButton.addTarget(self, action: #selector(self.presentSignUpViewController), for: .touchUpInside)
+        self.ownView.signInButton.addTarget(self, action: #selector(self.presentSignInViewController), for: .touchUpInside)
+        self.ownView.signUpButton.addTarget(self, action: #selector(self.presentSignUpViewController), for: .touchUpInside)
     }
 
     override func loadView() {
-        view = ownView
+        view = self.ownView
     }
 
     override func viewDidLoad() {
