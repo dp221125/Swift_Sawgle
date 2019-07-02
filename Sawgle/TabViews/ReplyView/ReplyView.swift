@@ -8,10 +8,11 @@
 
 import UIKit
 
-/// MARK:- 댓글 메인뷰
+// MARK: - 댓글 메인뷰
+
 class ReplyView: UIView {
-    
     // MARK: Setting Views
+
     let replyTableView: UITableView = {
         let replyTableView = UITableView(frame: CGRect.zero, style: .grouped)
         replyTableView.backgroundColor = UIColor(named: "PinkishGrey")
@@ -19,26 +20,29 @@ class ReplyView: UIView {
         replyTableView.allowsSelection = false
         return replyTableView
     }()
-    
-    // MARK:- Setting Methods
+
+    // MARK: - Setting Methods
+
     // MARK: setViewConstraints
-    func setReplyTableViewConstratins(){
-        replyTableView.translatesAutoresizingMaskIntoConstraints = false
+
+    func setReplyTableViewConstratins() {
+        self.replyTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             replyTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             replyTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             replyTableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
-            replyTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
-            ])
+            replyTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+        ])
     }
-    
-    // MARK:- Initialization
+
+    // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(replyTableView)
+        self.addSubview(self.replyTableView)
         self.setReplyTableViewConstratins()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

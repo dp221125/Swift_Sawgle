@@ -19,14 +19,15 @@ struct ReplyData {
         let nowDate = Date()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd a h:mm"
-        postDate = dateFormatter.string(from: nowDate)
-        nickName = " " // 닉네임
-        postText = text
-        heartCount = 0
+        self.postDate = dateFormatter.string(from: nowDate)
+        self.nickName = " " // 닉네임
+        self.postText = text
+        self.heartCount = 0
     }
 }
 
-// MARK:- POST REQUEST
+// MARK: - POST REQUEST
+
 struct ReplyPostData: Codable {
     let nickName: String
     let postText: String = {
@@ -37,9 +38,10 @@ struct ReplyPostData: Codable {
         let postText = dateFormatter.string(from: nowDate)
         return postText
     }()
+
     let postDate: String
     let heartCount: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case nickName, postText, postDate, heartCount
     }

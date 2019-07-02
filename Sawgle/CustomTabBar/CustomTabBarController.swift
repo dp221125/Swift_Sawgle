@@ -59,7 +59,7 @@ class CustomTabBarController: UIViewController {
         guard let targetView = view as? CustomTabBarView else {
             return
         }
-        
+
         let newNavigation = UINavigationController(rootViewController: vcList[index])
         newNavigation.navigationBar.barTintColor = UIColor(named: "Pale")
         newNavigation.navigationBar.shadowImage = UIImage()
