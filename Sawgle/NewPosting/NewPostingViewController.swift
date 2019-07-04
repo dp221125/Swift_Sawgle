@@ -9,15 +9,10 @@
 import UIKit
 
 class NewPostingViewController: UIViewController {
-
-    @IBOutlet weak var postingView: UIView!
+    @IBOutlet var postingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        postingView.backgroundColor = .white
-        postingView.layer.cornerRadius = 30
+        self.postingView.backgroundColor = .white
+        self.postingView.layer.cornerRadius = 30
     }
-    
-
-
-
 }
